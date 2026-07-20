@@ -386,6 +386,7 @@ body {
 
 <div class="footer" id="footerEl">4D标注规范考试题 & 行车MAP考题 · 随机模拟考核系统</div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 // ==================== QUESTION BANK ====================
 const questionBank = [
@@ -497,22 +498,72 @@ const questionBank = [
     {id:100,type:"judge",source:"行车MAP",question:"【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",answer:true}
 ];
 
-// ==================== STORAGE ====================
-const STORAGE_KEY = 'exam_results_v2';
+// ==================== SUPABASE CLOUD DATABASE ====================
+const SUPABASE_URL = 'https://w2he6vo.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_w2he6vo_pVHWYQFw47tHPA_4FgV6SoO';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const ADMIN_PASSWORD = 'admin123';
+let cachedResults = null;
+let cacheTime = 0;
 
-function getResults() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-    catch(e) { return []; }
+async function getResults(forceRefresh = false) {
+    if (!forceRefresh && cachedResults && (Date.now() - cacheTime < 5000)) return cachedResults;
+    try {
+        const all = [];
+        let from = 0, size = 1000, hasMore = true;
+        while (hasMore) {
+            const { data, error } = await supabase.from('exam_results').select('*').range(from, from + size - 1).order('timestamp', { ascending: false });
+            if (error) throw error;
+            if (data && data.length > 0) { all.push(...data); from += size; }
+            if (!data || data.length < size) hasMore = false;
+        }
+        // Normalize snake_case -> camelCase
+        cachedResults = all.map(r => ({
+            id: r.id, userName: r.user_name, timestamp: r.timestamp,
+            score: r.score, correct: r.correct_count, wrong: r.wrong_count,
+            total: r.total_count, questions: r.questions, gradings: r.gradings
+        }));
+        cacheTime = Date.now();
+        return cachedResults;
+    } catch(e) { console.error('getResults error:', e); return []; }
 }
-function saveResults(arr) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+
+async function saveResults(arr) { /* No-op: individual record operations handle persistence */ }
+
+async function addResult(record) {
+    const { error } = await supabase.from('exam_results').insert({
+        id: record.id, user_name: record.userName, timestamp: record.timestamp,
+        score: record.score, correct_count: record.correct, wrong_count: record.wrong,
+        total_count: record.total, questions: record.questions, gradings: record.gradings
+    });
+    if (error) { console.error('addResult error:', error); showToast('⚠️ 成绩上传失败，请检查网络'); return false; }
+    cachedResults = null;
+    return true;
 }
-function addResult(record) {
-    const results = getResults();
-    results.push(record);
-    saveResults(results);
-    updateHistoryCount();
+
+async function deleteRecordById(id) {
+    const { error } = await supabase.from('exam_results').delete().eq('id', id);
+    if (error) { console.error('deleteRecord error:', error); return false; }
+    cachedResults = null;
+    return true;
+}
+
+async function clearAllRecords() {
+    const { error } = await supabase.from('exam_results').delete().neq('id', 0);
+    if (error) { console.error('clearAll error:', error); return false; }
+    cachedResults = null;
+    return true;
+}
+
+async function ensureTableExists() {
+    // Try to query the table; if it doesn't exist, create it via REST
+    const { error } = await supabase.from('exam_results').select('id').limit(1);
+    if (error && error.code === '42P01') {
+        // Table doesn't exist - need to create via SQL. Show message to user.
+        showToast('⚠️ 数据库表未创建，请在 Supabase SQL Editor 中执行建表语句');
+        return false;
+    }
+    return true;
 }
 
 // ==================== EXAM APP ====================
@@ -538,7 +589,9 @@ function init() {
 }
 
 function updateHistoryCount() {
-    document.getElementById('examHistoryCount').textContent = getResults().length;
+    getResults().then(results => {
+        document.getElementById('examHistoryCount').textContent = results.length;
+    });
 }
 
 function startExam() {
@@ -709,7 +762,7 @@ function submitExam() {
     showResults();
 }
 
-function showResults() {
+async function showResults() {
     let correct = 0, wrong = 0;
     const gradings = [];
     selectedQuestions.forEach(q => {
@@ -728,7 +781,7 @@ function showResults() {
 
     const score = Math.round((correct / TOTAL) * 100);
 
-    // Save to storage
+    // Save to Supabase cloud
     const record = {
         id: Date.now(),
         userName: currentUserName,
@@ -740,7 +793,9 @@ function showResults() {
         questions: selectedQuestions.map(q => q.id),
         gradings: gradings
     };
-    addResult(record);
+    const uploaded = await addResult(record);
+    if (!uploaded) { showToast('⚠️ 成绩上传失败，请重试'); }
+    updateHistoryCount();
 
     document.getElementById('examScreen').style.display = 'none';
     document.getElementById('resultScreen').style.display = 'block';
@@ -861,8 +916,7 @@ function showAdminDashboard() {
     document.querySelector('.header .admin-link').textContent = '🏠 首页';
     document.querySelector('.header .admin-link').onclick = exitAdmin;
     document.body.classList.add('admin-body');
-    renderAdminTab('overview');
-    // Activate first nav
+    ensureTableExists().then(() => renderAdminTab('overview'));
     document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
     document.querySelector('.sidebar-nav a').classList.add('active');
 }
@@ -883,8 +937,8 @@ function switchAdminTab(tab, el) {
     renderAdminTab(tab);
 }
 
-function renderAdminTab(tab) {
-    const results = getResults();
+async function renderAdminTab(tab) {
+    const results = await getResults(true);
     const main = document.getElementById('adminMainContent');
 
     if (tab === 'overview') renderOverview(main, results);
@@ -1116,8 +1170,8 @@ function renderDataManagement(main, results) {
     `;
 }
 
-function viewDetail(id) {
-    const results = getResults();
+async function viewDetail(id) {
+    const results = await getResults();
     const r = results.find(x => String(x.id) === String(id));
     if (!r) return;
 
@@ -1157,23 +1211,22 @@ function viewDetail(id) {
 
 function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; }
 
-function viewUserHistory(name) {
-    const results = getResults().filter(r => r.userName === name);
-    if (results.length === 0) return;
-    const markers = ['A','B','C','D','E','F'];
-    const latest = results[results.length - 1];
+async function viewUserHistory(name) {
+    const results = await getResults();
+    const filtered = results.filter(r => r.userName === name);
+    if (filtered.length === 0) return;
     const html = `
         <h3>👤 ${escHtml(name)} 的考试历史</h3>
         <div class="detail-grid">
-            <div class="detail-item"><div class="lbl">考试次数</div><div class="val">${results.length}次</div></div>
-            <div class="detail-item"><div class="lbl">最高分</div><div class="val" style="color:var(--success);">${Math.max(...results.map(r=>r.score))}分</div></div>
-            <div class="detail-item"><div class="lbl">最低分</div><div class="val" style="color:var(--danger);">${Math.min(...results.map(r=>r.score))}分</div></div>
-            <div class="detail-item"><div class="lbl">平均分</div><div class="val">${Math.round(results.reduce((s,r)=>s+r.score,0)/results.length)}分</div></div>
+            <div class="detail-item"><div class="lbl">考试次数</div><div class="val">${filtered.length}次</div></div>
+            <div class="detail-item"><div class="lbl">最高分</div><div class="val" style="color:var(--success);">${Math.max(...filtered.map(r=>r.score))}分</div></div>
+            <div class="detail-item"><div class="lbl">最低分</div><div class="val" style="color:var(--danger);">${Math.min(...filtered.map(r=>r.score))}分</div></div>
+            <div class="detail-item"><div class="lbl">平均分</div><div class="val">${Math.round(filtered.reduce((s,r)=>s+r.score,0)/filtered.length)}分</div></div>
         </div>
         <table class="data-table" style="margin-top:12px;">
             <thead><tr><th>时间</th><th>成绩</th><th>正确/错误</th><th>操作</th></tr></thead>
             <tbody>
-                ${results.reverse().map(r => `<tr>
+                ${filtered.reverse().map(r => `<tr>
                     <td>${formatTime(r.timestamp)}</td>
                     <td><span class="score-badge ${r.score>=90?'score-high':r.score>=60?'score-mid':'score-low'}">${r.score}分</span></td>
                     <td>✅${r.correct} / ❌${r.wrong}</td>
@@ -1187,20 +1240,22 @@ function viewUserHistory(name) {
     document.getElementById('detailModal').style.display = 'flex';
 }
 
-function deleteRecord(id) {
+async function deleteRecord(id) {
     if (!confirm('确定要删除这条考试记录吗？')) return;
-    let results = getResults();
-    results = results.filter(r => String(r.id) !== String(id));
-    saveResults(results);
+    const ok = await deleteRecordById(id);
+    if (!ok) { showToast('删除失败，请重试'); return; }
+    await getResults(true); // refresh cache
     renderAdminTab(currentAdminTab);
     updateHistoryCount();
     showToast('记录已删除');
 }
 
-function clearAllData() {
+async function clearAllData() {
     if (!confirm('⚠️ 确定要清空所有考试数据吗？\n\n此操作不可撤销！')) return;
     if (!confirm('再次确认：清空所有数据？')) return;
-    saveResults([]);
+    const ok = await clearAllRecords();
+    if (!ok) { showToast('清空失败，请重试'); return; }
+    await getResults(true);
     renderAdminTab(currentAdminTab);
     updateHistoryCount();
     showToast('所有数据已清空');
@@ -1214,8 +1269,8 @@ function filterRecords(query) {
     });
 }
 
-function exportCSV() {
-    const results = getResults();
+async function exportCSV() {
+    const results = await getResults();
     if (results.length === 0) { showToast('没有数据可导出'); return; }
     let csv = '﻿时间,考生,成绩,正确数,错误数,答题详情\n';
     results.forEach(r => {
@@ -1229,34 +1284,37 @@ function exportCSV() {
     downloadFile('exam_results.csv', csv, 'text/csv;charset=utf-8');
 }
 
-function exportJSON() {
-    const results = getResults();
+async function exportJSON() {
+    const results = await getResults();
     if (results.length === 0) { showToast('没有数据可导出'); return; }
     downloadFile('exam_results.json', JSON.stringify(results, null, 2), 'application/json');
 }
 
-function importJSON(input) {
+async function importJSON(input) {
     const file = input.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = async function(e) {
         try {
             const data = JSON.parse(e.target.result);
             if (!Array.isArray(data)) throw new Error('格式错误');
-            const existing = getResults();
+            const existing = await getResults(true);
             const existingIds = new Set(existing.map(r => r.id));
-            let merged = 0;
-            data.forEach(r => {
-                if (!existingIds.has(r.id)) {
-                    existing.push(r);
-                    existingIds.add(r.id);
-                    merged++;
-                }
-            });
-            saveResults(existing);
+            let merged = 0, skipped = 0;
+            for (const r of data) {
+                if (existingIds.has(r.id)) { skipped++; continue; }
+                const { error } = await supabase.from('exam_results').insert({
+                    id: r.id, user_name: r.userName || r.user_name, timestamp: r.timestamp,
+                    score: r.score, correct_count: r.correct || r.correct_count, wrong_count: r.wrong || r.wrong_count,
+                    total_count: r.total || r.total_count, questions: r.questions || [], gradings: r.gradings || []
+                });
+                if (!error) { existingIds.add(r.id); merged++; }
+            }
+            cachedResults = null;
+            await getResults(true);
             renderAdminTab(currentAdminTab);
             updateHistoryCount();
-            showToast(`导入成功！新增 ${merged} 条记录（跳过 ${data.length - merged} 条重复）`);
+            showToast(`导入成功！新增 ${merged} 条记录（跳过 ${skipped} 条重复）`);
         } catch (err) {
             showToast('文件格式错误，请导入 .json 文件');
         }
