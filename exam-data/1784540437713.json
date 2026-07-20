@@ -1,0 +1,372 @@
+{
+  "id": 1784540437713,
+  "userName": "蒋德川",
+  "timestamp": "2026-07-20T09:40:37.713Z",
+  "score": 80,
+  "correct": 16,
+  "wrong": 4,
+  "total": 20,
+  "questions": [
+    10,
+    82,
+    64,
+    73,
+    85,
+    63,
+    54,
+    32,
+    87,
+    76,
+    90,
+    97,
+    95,
+    13,
+    56,
+    35,
+    57,
+    55,
+    20,
+    84
+  ],
+  "gradings": [
+    {
+      "qid": 10,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于双线标注规则，正确的是？",
+      "options": [
+        "两条线间距不超过80cm，标注在双线靠近车道的油漆线上",
+        "两条线间距不超过50cm即可",
+        "两条线间距不超过1m",
+        "双线间距可任意"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 82,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于石板路面的车道线标注，说法错误的是？",
+      "options": [
+        "车道线处虽无实际油漆标线，但是石板也需当作实线车道线标注",
+        "车道线处无实际油漆标线，此时车道线类型为虚拟车道线",
+        "图中停止线按实际位置标注在红色箭头处即可",
+        "车道线的几何不必为了吸附停止线而拖到红色箭头处"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 64,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "下列哪些是V6.0版本新增的场景标签？（多选）",
+      "options": [
+        "高速收费站",
+        "高速道路分流",
+        "城区车道合流",
+        "城区驶入辅路",
+        "城区驶出辅路"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 73,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "2D遮挡程度和2D截断程度属性当前需要标注。",
+      "correctAnswer": false,
+      "userAnswer": true,
+      "isCorrect": false
+    },
+    {
+      "qid": 85,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",
+      "options": [
+        "车道1挂接左转左掉头，车道2挂接左转",
+        "车道1挂接左转左掉头，车道2挂接左转左掉头",
+        "车道1挂接左转，车道2挂接左转",
+        "车道1挂接左转，车道2挂接左转直行"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 63,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "一般障碍物子类别包括？（多选）",
+      "options": [
+        "锥桶",
+        "防撞桶",
+        "隔离柱",
+        "石墩",
+        "充电桩"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 54,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "场景标签多clip情况下，对于同一位置不同轨迹的标签，正确的是？",
+      "options": [
+        "只标一次",
+        "需要对每个场景标签框额外增加起始帧号",
+        "合并为1个",
+        "随机标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 32,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "地面箭头的标注顺序是？",
+      "options": [
+        "随机",
+        "按箭头方向（同车道方向）左上角开始顺时针",
+        "按箭头方向左上角开始逆时针",
+        "从中心点开始"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 87,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于中心线车道转向说法正确的是？",
+      "options": [
+        "中心线1、2、3、4均为左转左掉头",
+        "中心线1、2、3、4转向都是左转",
+        "中心线1、2是直行，中心线3、4是左转",
+        "中心线1、2是直行，中心线3、4是左转、左掉头"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 2,
+      "isCorrect": false
+    },
+    {
+      "qid": 76,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "潮汐车道，如果自车恰好在潮汐时段内逆向行驶时，正常标注。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 90,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】哪些情况中心线需要打断？（多选）",
+      "options": [
+        "边界线线型变化",
+        "地面箭头属性变化",
+        "路口",
+        "车道数变化",
+        "道路边缘线类型变化",
+        "游离线变化处"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 97,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】采集车由主路开往匝道，此时需要同时标注高速道路分流场景和上匝道场景。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 95,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】道路两侧的道路边缘线方向需要与车道边界线方向保持一致。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 13,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "应急车道的宽度判断标准是？",
+      "options": [
+        ">0.5m",
+        ">1m",
+        ">1.4m",
+        ">2m"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 56,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道线属性标注包括？（多选）",
+      "options": [
+        "实例id",
+        "车道线线型",
+        "鱼骨线型",
+        "标线颜色",
+        "方向"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        1,
+        2,
+        3,
+        0
+      ],
+      "isCorrect": false
+    },
+    {
+      "qid": 35,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "停止线的几何标注位置是？",
+      "options": [
+        "油漆边缘",
+        "停止线的中间位置",
+        "停止线下方",
+        "停止线上方"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 57,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道线\"线型\"包括？（多选）",
+      "options": [
+        "单实线",
+        "双实线",
+        "双虚线",
+        "路口待转线",
+        "导流线"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 55,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于场景标签的\"起始帧\"，下列说法正确的是？",
+      "options": [
+        "自车轨迹进入对应场景框的起始帧号",
+        "场景结束帧",
+        "随机",
+        "第一帧"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 20,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于子线连接，实线连短虚线的连接点位置是？",
+      "options": [
+        "短虚线中间",
+        "短虚线尽头",
+        "实线尽头",
+        "实线中间"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 84,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于水马/墙的道路边缘线描述正确的是？",
+      "options": [
+        "在中间标1条道路边缘线，属性给水马",
+        "在两侧各标1条道路边缘线，属性给水马",
+        "在两侧各标1条道路边缘线，属性给墙",
+        "在中间标1条道路边缘线，属性给墙"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    }
+  ]
+}
