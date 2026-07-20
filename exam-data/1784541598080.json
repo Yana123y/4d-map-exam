@@ -1,0 +1,316 @@
+{
+  "id": 1784541598080,
+  "userName": "商阴雷",
+  "timestamp": "2026-07-20T09:59:58.080Z",
+  "score": 90,
+  "correct": 18,
+  "wrong": 2,
+  "total": 20,
+  "questions": [
+    74,
+    96,
+    21,
+    73,
+    75,
+    100,
+    13,
+    22,
+    3,
+    55,
+    38,
+    37,
+    16,
+    53,
+    19,
+    40,
+    90,
+    52,
+    28,
+    25
+  ],
+  "gradings": [
+    {
+      "qid": 74,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "一般障碍物上\"车上的一般障碍物\"也需要标注。",
+      "correctAnswer": false,
+      "userAnswer": true,
+      "isCorrect": false
+    },
+    {
+      "qid": 96,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 21,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"粗实线\"的出现位置，正确的是？",
+      "options": [
+        "多见于普通道路",
+        "多见于隧道分叉合并处",
+        "多见于停车场",
+        "多见于路口"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 73,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "2D遮挡程度和2D截断程度属性当前需要标注。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 75,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "2D清晰可见但3D点云不全的路面标识，根据2D脑补标注（没有40%一说）。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 100,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 13,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "应急车道的宽度判断标准是？",
+      "options": [
+        ">0.5m",
+        ">1m",
+        ">1.4m",
+        ">2m"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 22,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "\"路口待转线\"的定义是？",
+      "options": [
+        "路口内引导车辆通行的非停止线限制的车道线",
+        "在路口内，供车辆过路口临时停靠，前方有停止线，构成车道的路口内车道线",
+        "路口外的待转区车道线",
+        "路口的出口道线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 3,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "忽略区域占比不应超过？",
+      "options": [
+        "20%",
+        "30%",
+        "40%",
+        "50%"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 55,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于场景标签的\"起始帧\"，下列说法正确的是？",
+      "options": [
+        "自车轨迹进入对应场景框的起始帧号",
+        "场景结束帧",
+        "随机",
+        "第一帧"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 38,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "斑马线跨越双车道时，标注起点是？",
+      "options": [
+        "从左侧车道开始",
+        "从右侧车道开始",
+        "以自车所在车道行驶方向（自车位置）和左上角点开始顺时针",
+        "从斑马线中心开始"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 37,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于斑马线标注方向，正确的是？",
+      "options": [
+        "优先以车道方向左上角开始顺时针",
+        "右上角开始顺时针",
+        "左下角开始逆时针",
+        "随机"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 16,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面宽度大于5m的较窄双向道路，需要拆分并标注？",
+      "options": [
+        "1条虚拟车道线",
+        "2条不同方向的虚拟车道线",
+        "3条虚拟车道线",
+        "不需要虚拟车道线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 53,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签\"未经过也需要标\"？",
+      "options": [
+        "路口调头",
+        "园区内部路",
+        "夜晚",
+        "路口左转"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 19,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面车道线严重磨损时，标注规则是？",
+      "options": [
+        "不标注",
+        "正常标注，磨损属性给严重磨损",
+        "正常标注，磨损属性默认完全可见",
+        "模糊化处理"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 40,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "导流区的几何绘制是？",
+      "options": [
+        "沿其内轮廓多边形，顺时针采集形状点",
+        "沿外轮廓",
+        "随机",
+        "用矩形框"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 90,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】哪些情况中心线需要打断？（多选）",
+      "options": [
+        "边界线线型变化",
+        "地面箭头属性变化",
+        "路口",
+        "车道数变化",
+        "道路边缘线类型变化",
+        "游离线变化处"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": false
+    },
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 28,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"左转+掉头\"的赋值规则，正确的是？",
+      "options": [
+        "无禁止掉头指示且是最左侧车道，从可掉头的最左侧左转车道往前到前一个岔路口为止的车道，均给左转+掉头",
+        "所有左转车道都给左转+掉头",
+        "仅最右侧车道给左转+掉头",
+        "仅中间车道给左转+掉头"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 25,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于非机动车道判断，下列说法正确的是？",
+      "options": [
+        "相邻车道线或车道线与道路边缘横向距离＞1m，视为非机动车道",
+        "所有非标准车道都是非机动车道",
+        "非机动车道不标注",
+        "非机动车道与机动车道之间必须有路沿"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    }
+  ]
+}
