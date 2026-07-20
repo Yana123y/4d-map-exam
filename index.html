@@ -536,25 +536,29 @@ async function githubAPI(path, method = 'GET', body = null) {
 async function getResults(forceRefresh = false) {
     if (!forceRefresh && cachedResults && (Date.now() - cacheTime < 8000)) return cachedResults;
     try {
-        // List all files in the data directory
         const files = await githubAPI('contents/' + DATA_PATH);
         if (!files || !Array.isArray(files)) { cachedResults = []; cacheTime = Date.now(); return []; }
 
-        // Fetch each file and parse
+        const jsonFiles = files.filter(f => f.name && f.name.endsWith('.json'));
+        // Fetch each file individually to get full content reliably
         const results = [];
-        for (const f of files) {
-            if (f.name.endsWith('.json')) {
+        for (const f of jsonFiles) {
+            try {
+                const detail = await githubAPI('contents/' + DATA_PATH + '/' + f.name);
+                if (!detail || !detail.content) continue;
+                const raw = atob(detail.content.replace(/\s/g, ''));
+                const decoded = decodeURIComponent(escape(raw));
+                results.push(JSON.parse(decoded));
+            } catch(e) {
+                // Also try without escape/decode for plain ASCII files
                 try {
-                    const decoded = decodeURIComponent(escape(atob(f.content)));
-                    results.push(JSON.parse(decoded));
-                } catch(e) {
-                    try {
-                        const detail = await githubAPI('contents/' + DATA_PATH + '/' + f.name);
-                        if (detail && detail.content) {
-                            const decoded = decodeURIComponent(escape(atob(detail.content)));
-                            results.push(JSON.parse(decoded));
-                        }
-                    } catch(e2) {}
+                    const detail = await githubAPI('contents/' + DATA_PATH + '/' + f.name);
+                    if (detail && detail.content) {
+                        const raw = atob(detail.content.replace(/\s/g, ''));
+                        results.push(JSON.parse(raw));
+                    }
+                } catch(e2) {
+                    console.warn('Failed to parse:', f.name, e2.message);
                 }
             }
         }
@@ -564,7 +568,6 @@ async function getResults(forceRefresh = false) {
         return results;
     } catch(e) {
         console.error('GitHub getResults:', e);
-        // Fallback to localStorage
         try { cachedResults = JSON.parse(localStorage.getItem('exam_results_v2')) || []; cacheTime = Date.now(); return cachedResults; }
         catch(e2) { return []; }
     }
