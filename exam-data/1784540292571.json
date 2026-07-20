@@ -1,0 +1,310 @@
+{
+  "id": 1784540292571,
+  "userName": "唐维诺",
+  "timestamp": "2026-07-20T09:38:12.571Z",
+  "score": 90,
+  "correct": 18,
+  "wrong": 2,
+  "total": 20,
+  "questions": [
+    15,
+    83,
+    27,
+    100,
+    18,
+    52,
+    47,
+    77,
+    43,
+    62,
+    97,
+    98,
+    35,
+    7,
+    69,
+    42,
+    94,
+    2,
+    8,
+    33
+  ],
+  "gradings": [
+    {
+      "qid": 15,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面宽度小于5m的较窄双向道路上，车道中心线标记为？",
+      "options": [
+        "同向车道",
+        "双向车道",
+        "多个同向车道",
+        "不标注中心线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 83,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于道路边缘线标注描述正确的是？",
+      "options": [
+        "标注为平路沿/自然边界",
+        "断开不标注",
+        "直接连过去，属性随前后",
+        "标注为虚拟路沿"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 27,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于转向类型的判断依据，正确的是？",
+      "options": [
+        "仅看路面箭头",
+        "仅看拓扑",
+        "车道覆盖的路面箭头的属性 + 靠近路口且无道路分叉的拓扑",
+        "随机判断"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 100,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 18,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线Y字形如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 47,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "充电桩的标注范围，正确的是？",
+      "options": [
+        "仅线",
+        "仅水泥底座",
+        "仅标注箱体本身，线和水泥底座都不标注",
+        "全部标注"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 77,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 43,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "文字框的文字内容需要填写？",
+      "options": [
+        "所有文字",
+        "仅填写\"公\"和\"交\"",
+        "仅填写字母",
+        "不填写"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 62,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "停止线类型包括？（多选）",
+      "options": [
+        "路口停止线",
+        "待转停止线",
+        "减速带",
+        "进入线",
+        "闸机线"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 97,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】采集车由主路开往匝道，此时需要同时标注高速道路分流场景和上匝道场景。",
+      "correctAnswer": false,
+      "userAnswer": true,
+      "isCorrect": false
+    },
+    {
+      "qid": 98,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】路口前地面无箭头时，根据路口实际拓扑给转向。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 35,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "停止线的几何标注位置是？",
+      "options": [
+        "油漆边缘",
+        "停止线的中间位置",
+        "停止线下方",
+        "停止线上方"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 7,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于雨天、雪天、雾天场景，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不用标注",
+        "雨天不标，雪天标",
+        "看时间段决定"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 69,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "进入线为停止线的延长线，车道线和中心线需要与停止线吸附，无需和进入线吸附。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 42,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "通用停止线与大车专用停止线同时出现时？",
+      "options": [
+        "都标注",
+        "仅标注通用停止线，大车专用停止线不标",
+        "仅标注大车专用",
+        "仅标文字"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 94,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于闸机线的标注，作业范围内出现了闸机，结合2D图片和点云资料能标的均正常标注；实际有闸机主体但是无横杆的也正常标；闸机线无需关联在中心线上。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 2,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于轨迹长度要求，正确的是？",
+      "options": [
+        "轨迹长度＞100m即可标注",
+        "轨迹长度＞200m即可标注",
+        "轨迹长度＞300m才可标注",
+        "无长度要求"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 8,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "行车MAP出现泊车场景（不包括路过路边停车场）时？",
+      "options": [
+        "正常标注",
+        "不标注",
+        "部分标注",
+        "反馈后再标"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 3,
+      "isCorrect": false
+    },
+    {
+      "qid": 33,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"禁止左转\"箭头标注，正确的是？",
+      "options": [
+        "仅标\"X\"部分",
+        "仅标箭头部分",
+        "标框需要标\"X\"和左转标识合起来的外接框",
+        "不标"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    }
+  ]
+}

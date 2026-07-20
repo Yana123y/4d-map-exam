@@ -1,0 +1,328 @@
+{
+  "id": 1784540653300,
+  "userName": "唐维诺",
+  "timestamp": "2026-07-20T09:44:13.300Z",
+  "score": 95,
+  "correct": 19,
+  "wrong": 1,
+  "total": 20,
+  "questions": [
+    69,
+    18,
+    24,
+    99,
+    45,
+    77,
+    14,
+    46,
+    20,
+    26,
+    39,
+    72,
+    13,
+    17,
+    57,
+    70,
+    23,
+    48,
+    8,
+    90
+  ],
+  "gradings": [
+    {
+      "qid": 69,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "进入线为停止线的延长线，车道线和中心线需要与停止线吸附，无需和进入线吸附。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 18,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线Y字形如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 24,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口内的车道中心线需要绑定左右车道线吗？",
+      "options": [
+        "必须绑定",
+        "可选绑定",
+        "无需绑定，也无需绑定左右车道",
+        "仅绑定左侧"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 99,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于非机动车道的路口拓扑，无地面实际箭头时，连接原则为拓扑直行和右转即可。",
+      "correctAnswer": true,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 45,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面标识2D清晰可见但3D完全没出现，距离>15m时？",
+      "options": [
+        "必须脑补标注",
+        "不用脑补标注，直接无视不标注",
+        "数据反馈",
+        "部分标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 77,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 14,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于车道线打断原则，错误的是？",
+      "options": [
+        "属性变化点需要打断",
+        "道路出现分叉时需要打断",
+        "道路出现合流时需要打断",
+        "仅当季节变化时打断"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 46,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面标识2D清晰可见但3D完全没出现，距离<15m时？",
+      "options": [
+        "正常标注",
+        "不用脑补标注",
+        "数据反馈，整图暂不标注",
+        "局部标注"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 20,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于子线连接，实线连短虚线的连接点位置是？",
+      "options": [
+        "短虚线中间",
+        "短虚线尽头",
+        "实线尽头",
+        "实线中间"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 26,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "\"左车道\"在什么情况下不挂接？",
+      "options": [
+        "有护栏、锥桶线被硬隔离隔开",
+        "同向车道",
+        "双向车道",
+        "路口内"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 39,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于禁停区设置在行人道上的处理，正确的是？",
+      "options": [
+        "正常标注",
+        "不需要制作",
+        "用虚线标",
+        "用红色标"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 72,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "标牌背面2D和4D都不标注。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 13,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "应急车道的宽度判断标准是？",
+      "options": [
+        ">0.5m",
+        ">1m",
+        ">1.4m",
+        ">2m"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 17,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线V字形实线如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 57,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道线\"线型\"包括？（多选）",
+      "options": [
+        "单实线",
+        "双实线",
+        "双虚线",
+        "路口待转线",
+        "导流线"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 70,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "路面标识的磨损情况当前需要详细标注。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 23,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于车道中心线与左右车道线的绑定关系，正确的是？",
+      "options": [
+        "每个车道中心线左右可以有多条对应车道线",
+        "每个车道中心线左右只会各有1条对应的车道线",
+        "车道中心线只能绑右边",
+        "车道中心线可以无边界线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 48,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于井盖标注，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不标注",
+        "仅标注金属井盖",
+        "仅标注破损井盖"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 8,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "行车MAP出现泊车场景（不包括路过路边停车场）时？",
+      "options": [
+        "正常标注",
+        "不标注",
+        "部分标注",
+        "反馈后再标"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 90,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】哪些情况中心线需要打断？（多选）",
+      "options": [
+        "边界线线型变化",
+        "地面箭头属性变化",
+        "路口",
+        "车道数变化",
+        "道路边缘线类型变化",
+        "游离线变化处"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "isCorrect": true
+    }
+  ]
+}
