@@ -1,0 +1,390 @@
+{
+  "id": 1784541950196,
+  "userName": "唐维诺",
+  "timestamp": "2026-07-20T10:05:50.196Z",
+  "score": 95,
+  "correct": 19,
+  "wrong": 1,
+  "total": 20,
+  "questions": [
+    18,
+    23,
+    65,
+    16,
+    50,
+    61,
+    12,
+    69,
+    33,
+    24,
+    59,
+    67,
+    48,
+    19,
+    29,
+    88,
+    85,
+    92,
+    9,
+    57
+  ],
+  "gradings": [
+    {
+      "qid": 18,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线Y字形如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 23,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于车道中心线与左右车道线的绑定关系，正确的是？",
+      "options": [
+        "每个车道中心线左右可以有多条对应车道线",
+        "每个车道中心线左右只会各有1条对应的车道线",
+        "车道中心线只能绑右边",
+        "车道中心线可以无边界线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 65,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "关于\"高速被非锥桶的路沿隔开的部分\"，正确的是？（多选）",
+      "options": [
+        "需要标注",
+        "不需要标注",
+        "对向车道不标注",
+        "联通区域点云不清晰的情况下，也需要标注",
+        "不可以给忽略框"
+      ],
+      "correctAnswer": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 16,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面宽度大于5m的较窄双向道路，需要拆分并标注？",
+      "options": [
+        "1条虚拟车道线",
+        "2条不同方向的虚拟车道线",
+        "3条虚拟车道线",
+        "不需要虚拟车道线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 50,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "一般障碍物的\"方向\"定义，正确的是？",
+      "options": [
+        "锥桶有方向要求",
+        "隔离柱有方向要求",
+        "锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求",
+        "所有障碍物都有方向要求"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 61,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "下列哪些场景属于\"无需标注\"的数据？（多选）",
+      "options": [
+        "全图无任何车道线且无道路边缘",
+        "反复调整反射率都与地面对比度不明显",
+        "雷达车运动范围过小，>75%帧车辆静止",
+        "纯80%直路数据",
+        "雨天严重影响点云和图片判断"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 12,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "三线场景拆分原则，正确的是？",
+      "options": [
+        "拆分成2条单线1条双线",
+        "拆成1条单线1条双线，自车内侧为单线，外侧为双线",
+        "拆成3条单线",
+        "拆成1条三线标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 69,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "进入线为停止线的延长线，车道线和中心线需要与停止线吸附，无需和进入线吸附。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 33,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"禁止左转\"箭头标注，正确的是？",
+      "options": [
+        "仅标\"X\"部分",
+        "仅标箭头部分",
+        "标框需要标\"X\"和左转标识合起来的外接框",
+        "不标"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 24,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口内的车道中心线需要绑定左右车道线吗？",
+      "options": [
+        "必须绑定",
+        "可选绑定",
+        "无需绑定，也无需绑定左右车道",
+        "仅绑定左侧"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 59,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "转向类型\"turn_type\"包括？（多选）",
+      "options": [
+        "TurnLeft（左转）",
+        "TurnRight（右转）",
+        "TurnLeftAround（左掉头）",
+        "Straight（直行）",
+        "TurnRightAround（右掉头）"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        1,
+        0,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 67,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "错位的实例先问再标。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 48,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于井盖标注，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不标注",
+        "仅标注金属井盖",
+        "仅标注破损井盖"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 19,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面车道线严重磨损时，标注规则是？",
+      "options": [
+        "不标注",
+        "正常标注，磨损属性给严重磨损",
+        "正常标注，磨损属性默认完全可见",
+        "模糊化处理"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 29,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口掉头topo的\"全挂接\"原则，正确的是？",
+      "options": [
+        "仅最左侧车道挂接",
+        "仅最右侧车道挂接",
+        "所有进入方向可掉头车道挂接所有退出车道",
+        "仅挂接最近的退出车道"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 88,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】下列关于失效的判断，说法正确的是？（多选）",
+      "options": [
+        "雨天、雪天、雾天的场景，在不影响标注的情况下正常标注即可，同时需要标注对应类型的场景框",
+        "直路的场景，如果整个任务都是纯直路，没有需求场景时才失效不标注",
+        "全图无任何标注元素的才失效不标注，如果仅无车道线时，需要按照车道均分进行脑补标注",
+        "行车map，只要车道旁侧出现了停车位，就直接失效不标",
+        "关于路口不全的失效判断，如果任务内出现了一处路口但无法标全，此时不可以直接失效不标，要判断一下除了这个路口之外的轨迹是否还有其他需求场景且满足了有效轨迹200m"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 85,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",
+      "options": [
+        "车道1挂接左转左掉头，车道2挂接左转",
+        "车道1挂接左转左掉头，车道2挂接左转左掉头",
+        "车道1挂接左转，车道2挂接左转",
+        "车道1挂接左转，车道2挂接左转直行"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 92,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",
+      "options": [
+        "上下行之间由护栏隔开",
+        "上下行之间由锥筒隔开",
+        "上下行之间由固定立柱隔开",
+        "上下行之间由导流区隔开"
+      ],
+      "correctAnswer": [
+        0,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        2,
+        3
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 9,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"借道场景\"，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不标注",
+        "反馈后再标",
+        "看情况标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 57,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道线\"线型\"包括？（多选）",
+      "options": [
+        "单实线",
+        "双实线",
+        "双虚线",
+        "路口待转线",
+        "导流线"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    }
+  ]
+}
