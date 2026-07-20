@@ -501,69 +501,93 @@ const questionBank = [
 // ==================== SUPABASE CLOUD DATABASE ====================
 const SUPABASE_URL = 'https://w2he6vo.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_w2he6vo_pVHWYQFw47tHPA_4FgV6SoO';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 const ADMIN_PASSWORD = 'admin123';
 let cachedResults = null;
 let cacheTime = 0;
+let supabaseReady = false;
+let supabaseClient = null;
+
+function getSupabase() {
+    if (supabaseClient) return supabaseClient;
+    if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        supabaseReady = true;
+        return supabaseClient;
+    }
+    return null;
+}
+
+function isCloudReady() { return supabaseReady || getSupabase() !== null; }
 
 async function getResults(forceRefresh = false) {
     if (!forceRefresh && cachedResults && (Date.now() - cacheTime < 5000)) return cachedResults;
-    try {
-        const all = [];
-        let from = 0, size = 1000, hasMore = true;
-        while (hasMore) {
-            const { data, error } = await supabase.from('exam_results').select('*').range(from, from + size - 1).order('timestamp', { ascending: false });
-            if (error) throw error;
-            if (data && data.length > 0) { all.push(...data); from += size; }
-            if (!data || data.length < size) hasMore = false;
-        }
-        // Normalize snake_case -> camelCase
-        cachedResults = all.map(r => ({
-            id: r.id, userName: r.user_name, timestamp: r.timestamp,
-            score: r.score, correct: r.correct_count, wrong: r.wrong_count,
-            total: r.total_count, questions: r.questions, gradings: r.gradings
-        }));
-        cacheTime = Date.now();
-        return cachedResults;
-    } catch(e) { console.error('getResults error:', e); return []; }
+    const sb = getSupabase();
+    if (sb) {
+        try {
+            const all = [];
+            let from = 0, size = 1000;
+            while (true) {
+                const { data, error } = await sb.from('exam_results').select('*').range(from, from + size - 1).order('timestamp', { ascending: false });
+                if (error) throw error;
+                if (data && data.length > 0) { all.push(...data); from += size; }
+                if (!data || data.length < size) break;
+            }
+            cachedResults = all.map(r => ({
+                id: r.id, userName: r.user_name, timestamp: r.timestamp,
+                score: r.score, correct: r.correct_count, wrong: r.wrong_count,
+                total: r.total_count, questions: r.questions, gradings: r.gradings
+            }));
+            cacheTime = Date.now();
+            return cachedResults;
+        } catch(e) { console.error('Supabase getResults error:', e); }
+    }
+    // Fallback to localStorage
+    try { cachedResults = JSON.parse(localStorage.getItem('exam_results_v2')) || []; cacheTime = Date.now(); return cachedResults; }
+    catch(e) { return []; }
 }
 
-async function saveResults(arr) { /* No-op: individual record operations handle persistence */ }
-
 async function addResult(record) {
-    const { error } = await supabase.from('exam_results').insert({
-        id: record.id, user_name: record.userName, timestamp: record.timestamp,
-        score: record.score, correct_count: record.correct, wrong_count: record.wrong,
-        total_count: record.total, questions: record.questions, gradings: record.gradings
-    });
-    if (error) { console.error('addResult error:', error); showToast('⚠️ 成绩上传失败，请检查网络'); return false; }
-    cachedResults = null;
-    return true;
+    const sb = getSupabase();
+    if (sb) {
+        try {
+            const { error } = await sb.from('exam_results').insert({
+                id: record.id, user_name: record.userName, timestamp: record.timestamp,
+                score: record.score, correct_count: record.correct, wrong_count: record.wrong,
+                total_count: record.total, questions: record.questions, gradings: record.gradings
+            });
+            if (!error) { cachedResults = null; return true; }
+            console.error('Supabase addResult error:', error);
+        } catch(e) { console.error('Supabase addResult error:', e); }
+    }
+    // Fallback to localStorage
+    try {
+        const arr = JSON.parse(localStorage.getItem('exam_results_v2')) || [];
+        arr.push(record);
+        localStorage.setItem('exam_results_v2', JSON.stringify(arr));
+        cachedResults = null;
+        return true;
+    } catch(e) { return false; }
 }
 
 async function deleteRecordById(id) {
-    const { error } = await supabase.from('exam_results').delete().eq('id', id);
-    if (error) { console.error('deleteRecord error:', error); return false; }
-    cachedResults = null;
-    return true;
+    const sb = getSupabase();
+    if (sb) {
+        try { const { error } = await sb.from('exam_results').delete().eq('id', id); if (!error) { cachedResults = null; return true; } }
+        catch(e) {}
+    }
+    const arr = (await getResults(true)).filter(r => String(r.id) !== String(id));
+    localStorage.setItem('exam_results_v2', JSON.stringify(arr));
+    cachedResults = null; return true;
 }
 
 async function clearAllRecords() {
-    const { error } = await supabase.from('exam_results').delete().neq('id', 0);
-    if (error) { console.error('clearAll error:', error); return false; }
-    cachedResults = null;
-    return true;
-}
-
-async function ensureTableExists() {
-    // Try to query the table; if it doesn't exist, create it via REST
-    const { error } = await supabase.from('exam_results').select('id').limit(1);
-    if (error && error.code === '42P01') {
-        // Table doesn't exist - need to create via SQL. Show message to user.
-        showToast('⚠️ 数据库表未创建，请在 Supabase SQL Editor 中执行建表语句');
-        return false;
+    const sb = getSupabase();
+    if (sb) {
+        try { const { error } = await sb.from('exam_results').delete().neq('id', 0); if (!error) { cachedResults = null; return true; } }
+        catch(e) {}
     }
-    return true;
+    localStorage.removeItem('exam_results_v2');
+    cachedResults = null; return true;
 }
 
 // ==================== EXAM APP ====================
@@ -916,7 +940,7 @@ function showAdminDashboard() {
     document.querySelector('.header .admin-link').textContent = '🏠 首页';
     document.querySelector('.header .admin-link').onclick = exitAdmin;
     document.body.classList.add('admin-body');
-    ensureTableExists().then(() => renderAdminTab('overview'));
+    renderAdminTab('overview');
     document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
     document.querySelector('.sidebar-nav a').classList.add('active');
 }
@@ -1303,12 +1327,18 @@ async function importJSON(input) {
             let merged = 0, skipped = 0;
             for (const r of data) {
                 if (existingIds.has(r.id)) { skipped++; continue; }
-                const { error } = await supabase.from('exam_results').insert({
-                    id: r.id, user_name: r.userName || r.user_name, timestamp: r.timestamp,
-                    score: r.score, correct_count: r.correct || r.correct_count, wrong_count: r.wrong || r.wrong_count,
-                    total_count: r.total || r.total_count, questions: r.questions || [], gradings: r.gradings || []
-                });
-                if (!error) { existingIds.add(r.id); merged++; }
+                const sb = getSupabase();
+                if (sb) {
+                    const { error } = await sb.from('exam_results').insert({
+                        id: r.id, user_name: r.userName || r.user_name, timestamp: r.timestamp,
+                        score: r.score, correct_count: r.correct || r.correct_count, wrong_count: r.wrong || r.wrong_count,
+                        total_count: r.total || r.total_count, questions: r.questions || [], gradings: r.gradings || []
+                    });
+                    if (!error) { existingIds.add(r.id); merged++; continue; }
+                }
+                // Fallback: add to localStorage
+                const arr = JSON.parse(localStorage.getItem('exam_results_v2')) || [];
+                if (!arr.some(x => x.id === r.id)) { arr.push(r); localStorage.setItem('exam_results_v2', JSON.stringify(arr)); merged++; }
             }
             cachedResults = null;
             await getResults(true);
