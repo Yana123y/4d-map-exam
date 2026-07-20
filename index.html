@@ -940,9 +940,61 @@ function showAdminDashboard() {
     document.querySelector('.header .admin-link').textContent = '🏠 首页';
     document.querySelector('.header .admin-link').onclick = exitAdmin;
     document.body.classList.add('admin-body');
+    checkCloudConnection();
     renderAdminTab('overview');
     document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
     document.querySelector('.sidebar-nav a').classList.add('active');
+}
+
+async function checkCloudConnection() {
+    const sb = getSupabase();
+    let statusEl = document.getElementById('cloudStatus');
+    if (!statusEl) {
+        statusEl = document.createElement('div');
+        statusEl.id = 'cloudStatus';
+        statusEl.style.cssText = 'padding:10px 16px;margin:0 24px 16px;border-radius:8px;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:8px;justify-content:space-between;';
+        const mainContent = document.getElementById('adminMainContent');
+        if (mainContent) mainContent.prepend(statusEl);
+    }
+    if (sb) {
+        try {
+            const { data, error } = await sb.from('exam_results').select('id', { count: 'exact', head: true });
+            if (error) throw error;
+            const localCount = (JSON.parse(localStorage.getItem('exam_results_v2')) || []).length;
+            statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${data === null ? 0 : '—'}</strong> 条云端数据${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : ''}`;
+            statusEl.style.background = '#d1fae5'; statusEl.style.color = '#065f46';
+        } catch(e) {
+            statusEl.innerHTML = '<span>⚠️ <strong>云数据库连接失败</strong> · 使用浏览器本地存储 · 数据不会跨设备共享</span>';
+            statusEl.style.background = '#fef3c7'; statusEl.style.color = '#92400e';
+            console.error('Cloud check:', e);
+        }
+    } else {
+        statusEl.innerHTML = '<span>💻 <strong>离网模式</strong> · Supabase SDK 未加载 · 使用浏览器本地存储</span>';
+        statusEl.style.background = '#fee2e2'; statusEl.style.color = '#991b1b';
+    }
+}
+
+async function syncLocalToCloud() {
+    const sb = getSupabase();
+    if (!sb) { showToast('❌ 云端未连接，无法同步'); return; }
+    const local = JSON.parse(localStorage.getItem('exam_results_v2')) || [];
+    if (local.length === 0) { showToast('没有需要同步的本地数据'); return; }
+    let uploaded = 0, failed = 0;
+    for (const r of local) {
+        try {
+            const { error } = await sb.from('exam_results').insert({
+                id: r.id, user_name: r.userName || r.user_name, timestamp: r.timestamp,
+                score: r.score, correct_count: r.correct || r.correct_count, wrong_count: r.wrong || r.wrong_count,
+                total_count: r.total || r.total_count, questions: r.questions || [], gradings: r.gradings || []
+            });
+            if (error) { failed++; console.error('Sync error:', error); }
+            else uploaded++;
+        } catch(e) { failed++; }
+    }
+    if (uploaded > 0) { localStorage.removeItem('exam_results_v2'); cachedResults = null; }
+    showToast(`同步完成：✅ ${uploaded} 条成功${failed > 0 ? ` · ❌ ${failed} 条失败` : ''}`);
+    checkCloudConnection();
+    renderAdminTab(currentAdminTab);
 }
 
 function exitAdmin() {
