@@ -545,14 +545,14 @@ async function getResults(forceRefresh = false) {
         for (const f of files) {
             if (f.name.endsWith('.json')) {
                 try {
-                    const content = JSON.parse(atob(f.content));
-                    results.push(content);
+                    const decoded = decodeURIComponent(escape(atob(f.content)));
+                    results.push(JSON.parse(decoded));
                 } catch(e) {
-                    // Fallback: fetch individually if content not in listing
                     try {
                         const detail = await githubAPI('contents/' + DATA_PATH + '/' + f.name);
                         if (detail && detail.content) {
-                            results.push(JSON.parse(atob(detail.content)));
+                            const decoded = decodeURIComponent(escape(atob(detail.content)));
+                            results.push(JSON.parse(decoded));
                         }
                     } catch(e2) {}
                 }
