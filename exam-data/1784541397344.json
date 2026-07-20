@@ -1,0 +1,347 @@
+{
+  "id": 1784541397344,
+  "userName": "蒋佳琪",
+  "timestamp": "2026-07-20T09:56:37.344Z",
+  "score": 100,
+  "correct": 20,
+  "wrong": 0,
+  "total": 20,
+  "questions": [
+    94,
+    59,
+    61,
+    1,
+    60,
+    5,
+    8,
+    96,
+    32,
+    7,
+    65,
+    73,
+    52,
+    99,
+    44,
+    72,
+    28,
+    66,
+    17,
+    19
+  ],
+  "gradings": [
+    {
+      "qid": 94,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于闸机线的标注，作业范围内出现了闸机，结合2D图片和点云资料能标的均正常标注；实际有闸机主体但是无横杆的也正常标；闸机线无需关联在中心线上。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 59,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "转向类型\"turn_type\"包括？（多选）",
+      "options": [
+        "TurnLeft（左转）",
+        "TurnRight（右转）",
+        "TurnLeftAround（左掉头）",
+        "Straight（直行）",
+        "TurnRightAround（右掉头）"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 61,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "下列哪些场景属于\"无需标注\"的数据？（多选）",
+      "options": [
+        "全图无任何车道线且无道路边缘",
+        "反复调整反射率都与地面对比度不明显",
+        "雷达车运动范围过小，>75%帧车辆静止",
+        "纯80%直路数据",
+        "雨天严重影响点云和图片判断"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 1,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "标注范围的核心定义是？",
+      "options": [
+        "自车前150m，后50m，左右30m",
+        "自车前200m，后100m，左右50m",
+        "自车前300m，后150m，左右80m",
+        "自车前100m，后50m，左右30m"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 60,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "地面箭头\"类型\"包括？（多选）",
+      "options": [
+        "直行",
+        "左转",
+        "右转",
+        "掉头",
+        "直行或左转"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 5,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "非路口场景（高速/直行路）轨迹重复失效的判定是？",
+      "options": [
+        "采集场景重复时，轨迹条数＞2条",
+        "采集场景重复时，轨迹条数＞3条",
+        "采集场景重复时，轨迹条数＞5条",
+        "采集场景重复时，轨迹条数＞10条"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 8,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "行车MAP出现泊车场景（不包括路过路边停车场）时？",
+      "options": [
+        "正常标注",
+        "不标注",
+        "部分标注",
+        "反馈后再标"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 96,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 32,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "地面箭头的标注顺序是？",
+      "options": [
+        "随机",
+        "按箭头方向（同车道方向）左上角开始顺时针",
+        "按箭头方向左上角开始逆时针",
+        "从中心点开始"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 7,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于雨天、雪天、雾天场景，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不用标注",
+        "雨天不标，雪天标",
+        "看时间段决定"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 65,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "关于\"高速被非锥桶的路沿隔开的部分\"，正确的是？（多选）",
+      "options": [
+        "需要标注",
+        "不需要标注",
+        "对向车道不标注",
+        "联通区域点云不清晰的情况下，也需要标注",
+        "不可以给忽略框"
+      ],
+      "correctAnswer": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 73,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "2D遮挡程度和2D截断程度属性当前需要标注。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 99,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于非机动车道的路口拓扑，无地面实际箭头时，连接原则为拓扑直行和右转即可。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 44,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "公交车站地面标识符号，标注为？",
+      "options": [
+        "文字",
+        "禁停区",
+        "导流区",
+        "路面标识"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 72,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "标牌背面2D和4D都不标注。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 28,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"左转+掉头\"的赋值规则，正确的是？",
+      "options": [
+        "无禁止掉头指示且是最左侧车道，从可掉头的最左侧左转车道往前到前一个岔路口为止的车道，均给左转+掉头",
+        "所有左转车道都给左转+掉头",
+        "仅最右侧车道给左转+掉头",
+        "仅中间车道给左转+掉头"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 66,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "标识重叠印刷或易混淆的场景，人能判断的标注新标识，人也无法判断的标注忽略。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 17,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线V字形实线如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 19,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面车道线严重磨损时，标注规则是？",
+      "options": [
+        "不标注",
+        "正常标注，磨损属性给严重磨损",
+        "正常标注，磨损属性默认完全可见",
+        "模糊化处理"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    }
+  ]
+}

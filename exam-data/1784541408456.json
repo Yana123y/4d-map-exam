@@ -1,0 +1,334 @@
+{
+  "id": 1784541408456,
+  "userName": "蒋德川",
+  "timestamp": "2026-07-20T09:56:48.456Z",
+  "score": 70,
+  "correct": 14,
+  "wrong": 6,
+  "total": 20,
+  "questions": [
+    94,
+    86,
+    90,
+    29,
+    31,
+    77,
+    41,
+    80,
+    53,
+    67,
+    79,
+    2,
+    56,
+    9,
+    92,
+    30,
+    52,
+    96,
+    97,
+    36
+  ],
+  "gradings": [
+    {
+      "qid": 94,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于闸机线的标注，作业范围内出现了闸机，结合2D图片和点云资料能标的均正常标注；实际有闸机主体但是无横杆的也正常标；闸机线无需关联在中心线上。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 86,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】公交停靠站位置的车道类型是？",
+      "options": [
+        "公交专用道",
+        "常规车道",
+        "虚拟车道",
+        "非机动车道"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 90,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】哪些情况中心线需要打断？（多选）",
+      "options": [
+        "边界线线型变化",
+        "地面箭头属性变化",
+        "路口",
+        "车道数变化",
+        "道路边缘线类型变化",
+        "游离线变化处"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        1,
+        3
+      ],
+      "isCorrect": false
+    },
+    {
+      "qid": 29,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口掉头topo的\"全挂接\"原则，正确的是？",
+      "options": [
+        "仅最左侧车道挂接",
+        "仅最右侧车道挂接",
+        "所有进入方向可掉头车道挂接所有退出车道",
+        "仅挂接最近的退出车道"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 31,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口直行\"满射原则\"是指？",
+      "options": [
+        "进入车道与退出车道都需要被link连接，不能有遗漏",
+        "必须有交叉",
+        "倾斜连接",
+        "最短路径连接"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 77,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 41,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于减速线标注，正确的是？",
+      "options": [
+        "连续性减速线在道路内纵向出现长度＞10m时，不标注",
+        "不论长度都标注",
+        "长度＞5m才标注",
+        "仅标注起点"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 80,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于公交车框黄虚线的线型表达正确的是？",
+      "options": [
+        "画两根虚线，分别表达单虚线属性",
+        "画双线中间，表达双虚线属性",
+        "只画白虚线，忽略公交车框的黄虚线",
+        "画两根虚线，表达双虚线属性"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 53,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签\"未经过也需要标\"？",
+      "options": [
+        "路口调头",
+        "园区内部路",
+        "夜晚",
+        "路口左转"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 67,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "错位的实例先问再标。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 79,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于连接类型描述正确的是？",
+      "options": [
+        "1→2左分叉；2→3直行；3→4、5经过路口左转；4→6、5→7经过路口左转",
+        "1→2经过路口左掉头；2→3经过路口左掉头；3→4、5经过路口左掉头；4→6、5→7经过路口左掉头",
+        "1→2左分叉；2→3经过路口左掉头；3→4、5经过路口左转；4→6、5→7经过路口左转",
+        "1→2左分叉；2→3直行；3→4、5左/右分叉；4→6、5→7左/右合并"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": 1,
+      "isCorrect": false
+    },
+    {
+      "qid": 2,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于轨迹长度要求，正确的是？",
+      "options": [
+        "轨迹长度＞100m即可标注",
+        "轨迹长度＞200m即可标注",
+        "轨迹长度＞300m才可标注",
+        "无长度要求"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 56,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道线属性标注包括？（多选）",
+      "options": [
+        "实例id",
+        "车道线线型",
+        "鱼骨线型",
+        "标线颜色",
+        "方向"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "isCorrect": false
+    },
+    {
+      "qid": 9,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"借道场景\"，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不标注",
+        "反馈后再标",
+        "看情况标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 92,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",
+      "options": [
+        "上下行之间由护栏隔开",
+        "上下行之间由锥筒隔开",
+        "上下行之间由固定立柱隔开",
+        "上下行之间由导流区隔开"
+      ],
+      "correctAnswer": [
+        0,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        2,
+        3
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 30,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口直行topo中\"对应原则\"是指？",
+      "options": [
+        "机动车道对机动车道，非机动车道对非机动车道",
+        "左车道对右车道",
+        "随机对应",
+        "距离最近对应"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 96,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",
+      "correctAnswer": true,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 97,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】采集车由主路开往匝道，此时需要同时标注高速道路分流场景和上匝道场景。",
+      "correctAnswer": false,
+      "userAnswer": true,
+      "isCorrect": false
+    },
+    {
+      "qid": 36,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "停止线被导流区隔开时，标注规则是？",
+      "options": [
+        "标注多条线",
+        "标注一条线，标一整个停止线即可，中间横向的导流线未形成车道不标注",
+        "标注整个导流区",
+        "不标"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    }
+  ]
+}

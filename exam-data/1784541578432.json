@@ -1,0 +1,342 @@
+{
+  "id": 1784541578432,
+  "userName": "蒋德川",
+  "timestamp": "2026-07-20T09:59:38.432Z",
+  "score": 100,
+  "correct": 20,
+  "wrong": 0,
+  "total": 20,
+  "questions": [
+    9,
+    78,
+    62,
+    31,
+    37,
+    81,
+    51,
+    34,
+    44,
+    16,
+    68,
+    50,
+    20,
+    21,
+    92,
+    86,
+    6,
+    23,
+    71,
+    5
+  ],
+  "gradings": [
+    {
+      "qid": 9,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"借道场景\"，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不标注",
+        "反馈后再标",
+        "看情况标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 78,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于待行区的标注方式描述正确的是？",
+      "options": [
+        "标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为直行",
+        "标注虚拟车道线，中心线的车道属性给待行区车道，连接类型为直行",
+        "路口拓扑挂接，车道属性给路口车道，连接类型为经过路口直行，不用画虚拟车道线",
+        "标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为经过路口直行"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 62,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "停止线类型包括？（多选）",
+      "options": [
+        "路口停止线",
+        "待转停止线",
+        "减速带",
+        "进入线",
+        "闸机线"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 31,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口直行\"满射原则\"是指？",
+      "options": [
+        "进入车道与退出车道都需要被link连接，不能有遗漏",
+        "必须有交叉",
+        "倾斜连接",
+        "最短路径连接"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 37,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于斑马线标注方向，正确的是？",
+      "options": [
+        "优先以车道方向左上角开始顺时针",
+        "右上角开始顺时针",
+        "左下角开始逆时针",
+        "随机"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 81,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】对于右转拓扑正确的是？",
+      "options": [
+        "进入1挂主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1",
+        "进入1挂主路0、主路1；进入0挂退出辅路0、主路0、主路1",
+        "进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0",
+        "进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 51,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "单脚且不在可行驶范围内的障碍物，标注为？",
+      "options": [
+        "正常标注",
+        "标注为忽略",
+        "必须标注",
+        "标注为其他"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 34,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "停止线的类型不包括？",
+      "options": [
+        "路口停止线",
+        "减速带",
+        "待转停止线",
+        "反光停止线"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 44,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "公交车站地面标识符号，标注为？",
+      "options": [
+        "文字",
+        "禁停区",
+        "导流区",
+        "路面标识"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 16,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面宽度大于5m的较窄双向道路，需要拆分并标注？",
+      "options": [
+        "1条虚拟车道线",
+        "2条不同方向的虚拟车道线",
+        "3条虚拟车道线",
+        "不需要虚拟车道线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 68,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "路边加油站内部的地面标识可以不标注，但路边的禁停区正常标注。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 50,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "一般障碍物的\"方向\"定义，正确的是？",
+      "options": [
+        "锥桶有方向要求",
+        "隔离柱有方向要求",
+        "锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求",
+        "所有障碍物都有方向要求"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 20,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于子线连接，实线连短虚线的连接点位置是？",
+      "options": [
+        "短虚线中间",
+        "短虚线尽头",
+        "实线尽头",
+        "实线中间"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 21,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"粗实线\"的出现位置，正确的是？",
+      "options": [
+        "多见于普通道路",
+        "多见于隧道分叉合并处",
+        "多见于停车场",
+        "多见于路口"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 92,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",
+      "options": [
+        "上下行之间由护栏隔开",
+        "上下行之间由锥筒隔开",
+        "上下行之间由固定立柱隔开",
+        "上下行之间由导流区隔开"
+      ],
+      "correctAnswer": [
+        0,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        3,
+        2
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 86,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】公交停靠站位置的车道类型是？",
+      "options": [
+        "公交专用道",
+        "常规车道",
+        "虚拟车道",
+        "非机动车道"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 6,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于纯直路数据，下列说法正确的是？",
+      "options": [
+        "正常标注",
+        "不标注",
+        "看长度决定",
+        "看有无特定场景决定"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 23,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于车道中心线与左右车道线的绑定关系，正确的是？",
+      "options": [
+        "每个车道中心线左右可以有多条对应车道线",
+        "每个车道中心线左右只会各有1条对应的车道线",
+        "车道中心线只能绑右边",
+        "车道中心线可以无边界线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 71,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "高速上很少有停止线，高速上的路段缝隙不是停止线。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 5,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "非路口场景（高速/直行路）轨迹重复失效的判定是？",
+      "options": [
+        "采集场景重复时，轨迹条数＞2条",
+        "采集场景重复时，轨迹条数＞3条",
+        "采集场景重复时，轨迹条数＞5条",
+        "采集场景重复时，轨迹条数＞10条"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    }
+  ]
+}
