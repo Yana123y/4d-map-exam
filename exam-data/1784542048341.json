@@ -1,0 +1,347 @@
+{
+  "id": 1784542048341,
+  "userName": "唐维诺",
+  "timestamp": "2026-07-20T10:07:28.341Z",
+  "score": 95,
+  "correct": 19,
+  "wrong": 1,
+  "total": 20,
+  "questions": [
+    3,
+    4,
+    87,
+    43,
+    74,
+    86,
+    64,
+    40,
+    84,
+    10,
+    30,
+    58,
+    11,
+    34,
+    23,
+    81,
+    85,
+    96,
+    24,
+    13
+  ],
+  "gradings": [
+    {
+      "qid": 3,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "忽略区域占比不应超过？",
+      "options": [
+        "20%",
+        "30%",
+        "40%",
+        "50%"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 4,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于多clip标注的轨迹重复，路口场景失效的判定是？",
+      "options": [
+        "轨迹条数＞5条",
+        "轨迹条数＞10条",
+        "轨迹条数＞15条",
+        "轨迹条数＞20条"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 87,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于中心线车道转向说法正确的是？",
+      "options": [
+        "中心线1、2、3、4均为左转左掉头",
+        "中心线1、2、3、4转向都是左转",
+        "中心线1、2是直行，中心线3、4是左转",
+        "中心线1、2是直行，中心线3、4是左转、左掉头"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 43,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "文字框的文字内容需要填写？",
+      "options": [
+        "所有文字",
+        "仅填写\"公\"和\"交\"",
+        "仅填写字母",
+        "不填写"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 74,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "一般障碍物上\"车上的一般障碍物\"也需要标注。",
+      "correctAnswer": false,
+      "userAnswer": true,
+      "isCorrect": false
+    },
+    {
+      "qid": 86,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】公交停靠站位置的车道类型是？",
+      "options": [
+        "公交专用道",
+        "常规车道",
+        "虚拟车道",
+        "非机动车道"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 64,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "下列哪些是V6.0版本新增的场景标签？（多选）",
+      "options": [
+        "高速收费站",
+        "高速道路分流",
+        "城区车道合流",
+        "城区驶入辅路",
+        "城区驶出辅路"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 40,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "导流区的几何绘制是？",
+      "options": [
+        "沿其内轮廓多边形，顺时针采集形状点",
+        "沿外轮廓",
+        "随机",
+        "用矩形框"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 84,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于水马/墙的道路边缘线描述正确的是？",
+      "options": [
+        "在中间标1条道路边缘线，属性给水马",
+        "在两侧各标1条道路边缘线，属性给水马",
+        "在两侧各标1条道路边缘线，属性给墙",
+        "在中间标1条道路边缘线，属性给墙"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 10,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于双线标注规则，正确的是？",
+      "options": [
+        "两条线间距不超过80cm，标注在双线靠近车道的油漆线上",
+        "两条线间距不超过50cm即可",
+        "两条线间距不超过1m",
+        "双线间距可任意"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 30,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口直行topo中\"对应原则\"是指？",
+      "options": [
+        "机动车道对机动车道，非机动车道对非机动车道",
+        "左车道对右车道",
+        "随机对应",
+        "距离最近对应"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 58,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道中心线\"车道类型\"包括？（多选）",
+      "options": [
+        "Normal（常规车道）",
+        "Emergency（应急车道）",
+        "Bicycle（非机动车道）",
+        "Intersection（路口车道）",
+        "Reversible（潮汐车道）"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 11,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "双向超宽车道（>5m且<10m），需要在道路中间标注？",
+      "options": [
+        "1条虚拟车道线",
+        "2条虚拟车道线",
+        "3条虚拟车道线",
+        "不需要虚拟车道线"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 34,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "停止线的类型不包括？",
+      "options": [
+        "路口停止线",
+        "减速带",
+        "待转停止线",
+        "反光停止线"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 23,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于车道中心线与左右车道线的绑定关系，正确的是？",
+      "options": [
+        "每个车道中心线左右可以有多条对应车道线",
+        "每个车道中心线左右只会各有1条对应的车道线",
+        "车道中心线只能绑右边",
+        "车道中心线可以无边界线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 81,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】对于右转拓扑正确的是？",
+      "options": [
+        "进入1挂主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1",
+        "进入1挂主路0、主路1；进入0挂退出辅路0、主路0、主路1",
+        "进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0",
+        "进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 85,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",
+      "options": [
+        "车道1挂接左转左掉头，车道2挂接左转",
+        "车道1挂接左转左掉头，车道2挂接左转左掉头",
+        "车道1挂接左转，车道2挂接左转",
+        "车道1挂接左转，车道2挂接左转直行"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 96,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 24,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口内的车道中心线需要绑定左右车道线吗？",
+      "options": [
+        "必须绑定",
+        "可选绑定",
+        "无需绑定，也无需绑定左右车道",
+        "仅绑定左侧"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 13,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "应急车道的宽度判断标准是？",
+      "options": [
+        ">0.5m",
+        ">1m",
+        ">1.4m",
+        ">2m"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    }
+  ]
+}
