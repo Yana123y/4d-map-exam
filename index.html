@@ -18,286 +18,283 @@
     --border: #e2e8f0;
     --shadow: 0 2px 12px rgba(0,0,0,0.08);
     --radius: 12px;
-    --tag-bg: #eef2ff;
-    --tag-text: #4f6ef7;
     --correct-bg: #d1fae5;
     --wrong-bg: #fee2e2;
     --selected-bg: #eef2ff;
+    --admin-bg: #0f172a;
+    --sidebar-w: 260px;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    min-height: 100vh;
+    background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
 }
-
-/* Header */
 .header {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: #fff;
-    padding: 24px 0;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    color: #fff; padding: 18px 0; text-align: center; position: sticky; top: 0;
+    z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    display: flex; align-items: center; justify-content: center; gap: 16px;
 }
-.header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: 0.5px; }
-.header .subtitle { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
-
-/* Container */
+.header h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.5px; }
+.header .subtitle { font-size: 0.85rem; opacity: 0.8; }
+.header .admin-link {
+    color: #fff; text-decoration: none; font-size: 0.85rem; font-weight: 600;
+    padding: 6px 16px; border: 2px solid rgba(255,255,255,0.4); border-radius: 20px;
+    transition: all 0.2s; cursor: pointer; background: transparent;
+}
+.header .admin-link:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
 .container { max-width: 900px; margin: 0 auto; padding: 20px; }
 
 /* Start Screen */
-.start-screen {
-    text-align: center;
-    padding: 60px 20px;
-}
+.start-screen { text-align: center; padding: 60px 20px; }
 .start-screen .icon { font-size: 4rem; margin-bottom: 20px; }
 .start-screen h2 { font-size: 1.8rem; margin-bottom: 12px; color: #1a1a2e; }
-.start-screen .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 24px 0; }
-.stat-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 20px 28px;
-    box-shadow: var(--shadow);
-    min-width: 120px;
-}
+.stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 24px 0; }
+.stat-card { background: var(--card-bg); border-radius: var(--radius); padding: 20px 28px; box-shadow: var(--shadow); min-width: 120px; }
 .stat-card .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
 .stat-card .label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
-
+.name-input-wrap { margin: 20px 0; }
+.name-input-wrap input {
+    padding: 14px 20px; font-size: 1.1rem; border: 2px solid var(--border); border-radius: 50px;
+    width: 280px; text-align: center; outline: none; transition: border-color 0.2s;
+}
+.name-input-wrap input:focus { border-color: var(--accent); }
+.name-input-wrap .hint { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; }
 .btn {
-    display: inline-block;
-    padding: 14px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.25s;
-    text-decoration: none;
+    display: inline-block; padding: 14px 40px; font-size: 1.1rem; font-weight: 600;
+    border: none; border-radius: 50px; cursor: pointer; transition: all 0.25s; text-decoration: none;
 }
 .btn-primary { background: var(--accent); color: #fff; }
 .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79,110,247,0.4); }
 .btn-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
 .btn-outline:hover { background: var(--accent); color: #fff; }
-.btn-sm { padding: 8px 20px; font-size: 0.9rem; }
+.btn-sm { padding: 8px 20px; font-size: 0.9rem; border-radius: 8px; }
+.btn-xs { padding: 4px 12px; font-size: 0.78rem; border-radius: 6px; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-danger:hover { background: #dc2626; }
 .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-
-/* Progress Bar */
 .progress-wrap {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    background: var(--card-bg); border-radius: var(--radius); padding: 16px 20px;
+    margin-bottom: 20px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 16px;
 }
-.progress-bar {
-    flex: 1;
-    height: 8px;
-    background: var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-}
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), #818cf8);
-    border-radius: 4px;
-    transition: width 0.4s ease;
-}
+.progress-bar { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #818cf8); border-radius: 4px; transition: width 0.4s ease; }
 .progress-text { font-weight: 600; font-size: 0.9rem; white-space: nowrap; color: var(--text-secondary); }
-
-/* Question Card */
 .question-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 28px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
-    transition: all 0.3s;
+    background: var(--card-bg); border-radius: var(--radius); padding: 28px;
+    margin-bottom: 20px; box-shadow: var(--shadow); transition: all 0.3s;
 }
 .question-card.answered { border-left: 4px solid var(--accent); }
 .question-card.correct { border-left: 4px solid var(--success); background: #f0fdf6; }
 .question-card.wrong { border-left: 4px solid var(--danger); background: #fef9f9; }
-
-.question-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 20px;
-}
+.question-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
 .question-number {
-    background: var(--accent);
-    color: #fff;
-    font-weight: 700;
-    font-size: 1rem;
-    min-width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem;
+    min-width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.question-type {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-left: 8px;
-}
+.question-type { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-left: 8px; }
 .type-single { background: #dbeafe; color: #2563eb; }
 .type-multi { background: #fef3c7; color: #d97706; }
 .type-judge { background: #d1fae5; color: #059669; }
-
-.question-text {
-    font-size: 1.05rem;
-    font-weight: 500;
-    line-height: 1.7;
-    flex: 1;
-}
-
-/* Options */
+.question-text { font-size: 1.05rem; font-weight: 500; line-height: 1.7; flex: 1; }
 .options { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.95rem;
-    user-select: none;
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    border: 2px solid var(--border); border-radius: 10px; cursor: pointer;
+    transition: all 0.2s; font-size: 0.95rem; user-select: none;
 }
 .option:hover { border-color: var(--accent); background: #f8faff; }
 .option.selected { border-color: var(--accent); background: var(--selected-bg); }
 .option.correct-answer { border-color: var(--success); background: var(--correct-bg); }
 .option.wrong-answer { border-color: var(--danger); background: var(--wrong-bg); }
 .option.disabled { pointer-events: none; opacity: 0.85; }
-
 .option-marker {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    border: 2px solid #cbd5e1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.85rem;
-    flex-shrink: 0;
-    transition: all 0.2s;
+    width: 32px; height: 32px; border-radius: 50%; border: 2px solid #cbd5e1;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; transition: all 0.2s;
 }
 .option.selected .option-marker { background: var(--accent); color: #fff; border-color: var(--accent); }
 .option.correct-answer .option-marker { background: var(--success); color: #fff; border-color: var(--success); }
 .option.wrong-answer .option-marker { background: var(--danger); color: #fff; border-color: var(--danger); }
-
 .option-label { flex: 1; }
-
-/* Judge options */
 .judge-options { display: flex; gap: 16px; }
 .judge-btn {
-    flex: 1;
-    padding: 14px;
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: all 0.2s;
-    user-select: none;
+    flex: 1; padding: 14px; border: 2px solid var(--border); border-radius: 10px;
+    text-align: center; cursor: pointer; font-size: 1.1rem; font-weight: 600; transition: all 0.2s; user-select: none;
 }
 .judge-btn:hover { border-color: var(--accent); }
 .judge-btn.selected { border-color: var(--accent); background: var(--selected-bg); }
-.judge-btn.true-selected.correct-answer { border-color: var(--success); background: var(--correct-bg); }
-.judge-btn.false-selected.correct-answer { border-color: var(--success); background: var(--correct-bg); }
+.judge-btn.correct-answer { border-color: var(--success); background: var(--correct-bg); }
 .judge-btn.wrong-answer { border-color: var(--danger); background: var(--wrong-bg); }
 .judge-btn.disabled { pointer-events: none; opacity: 0.85; }
-
-/* Explanation */
 .explanation {
-    margin-top: 16px;
-    padding: 14px 16px;
-    background: #f8fafc;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    border-left: 3px solid var(--accent);
-    display: none;
+    margin-top: 16px; padding: 14px 16px; background: #f8fafc; border-radius: 8px;
+    font-size: 0.9rem; color: var(--text-secondary); border-left: 3px solid var(--accent); display: none;
 }
 .explanation.show { display: block; }
 .explanation .correct-ans { font-weight: 700; color: var(--success); }
-
-/* Result Screen */
 .result-screen { text-align: center; padding: 40px 20px; display: none; }
 .result-screen .score-circle {
-    width: 140px; height: 140px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 24px;
-    font-size: 2.5rem;
-    font-weight: 800;
-    border: 6px solid var(--accent);
-    color: var(--accent);
+    width: 140px; height: 140px; border-radius: 50%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; margin: 0 auto 24px;
+    font-size: 2.5rem; font-weight: 800; border: 6px solid var(--accent); color: var(--accent);
 }
-.result-screen .score-label { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
 .result-summary { max-width: 400px; margin: 0 auto; text-align: left; }
 .result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
 .result-row .val { font-weight: 700; }
-.val.green { color: var(--success); }
-.val.red { color: var(--danger); }
-
-/* Navigation */
+.val.green { color: var(--success); } .val.red { color: var(--danger); }
 .nav-buttons { display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
 .nav-buttons .btn { min-width: 140px; }
-
-/* Toast */
 .toast {
     position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-    background: #1a1a2e; color: #fff; padding: 12px 24px;
-    border-radius: 30px; font-weight: 600; z-index: 200;
-    animation: toastIn 0.3s ease, toastOut 0.3s ease 2s forwards;
-    pointer-events: none;
+    background: #1a1a2e; color: #fff; padding: 12px 24px; border-radius: 30px;
+    font-weight: 600; z-index: 200; pointer-events: none;
+    animation: toastIn 0.3s ease, toastOut 0.3s ease 2.5s forwards;
 }
 @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(-20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
 
-/* Responsive */
-@media (max-width: 640px) {
-    .container { padding: 12px; }
-    .question-card { padding: 18px; }
-    .header h1 { font-size: 1.3rem; }
-    .stat-card { min-width: 90px; padding: 14px 16px; }
-    .stat-card .num { font-size: 1.5rem; }
+/* ============ ADMIN DASHBOARD STYLES ============ */
+.admin-body { background: #f1f5f9; }
+.admin-wrapper { display: flex; min-height: calc(100vh - 70px); }
+.admin-sidebar {
+    width: var(--sidebar-w); background: var(--admin-bg); color: #fff;
+    padding: 20px 0; flex-shrink: 0; display: flex; flex-direction: column;
 }
+.admin-sidebar .logo { padding: 0 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px; }
+.admin-sidebar .logo h2 { font-size: 1.1rem; }
+.admin-sidebar .logo span { font-size: 0.8rem; opacity: 0.6; }
+.sidebar-nav { list-style: none; padding: 0 12px; flex: 1; }
+.sidebar-nav li { margin-bottom: 4px; }
+.sidebar-nav li a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    color: #94a3b8; text-decoration: none; border-radius: 8px; font-size: 0.9rem;
+    transition: all 0.2s; cursor: pointer;
+}
+.sidebar-nav li a:hover { background: rgba(255,255,255,0.08); color: #e2e8f0; }
+.sidebar-nav li a.active { background: var(--accent); color: #fff; }
+.sidebar-nav li a .icon { font-size: 1.1rem; width: 24px; text-align: center; }
+.admin-main { flex: 1; padding: 24px 30px; overflow-y: auto; }
+.admin-main h2 { font-size: 1.5rem; margin-bottom: 20px; color: #1a1a2e; }
+.admin-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 30px; }
+.admin-card {
+    background: #fff; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 16px;
+}
+.admin-card .card-icon {
+    width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.5rem; flex-shrink: 0;
+}
+.admin-card .card-info .card-value { font-size: 1.8rem; font-weight: 800; }
+.admin-card .card-info .card-label { font-size: 0.82rem; color: var(--text-secondary); }
+.bg-blue { background: #eef2ff; color: #4f6ef7; }
+.bg-green { background: #d1fae5; color: #10b981; }
+.bg-orange { background: #fef3c7; color: #f59e0b; }
+.bg-red { background: #fee2e2; color: #ef4444; }
+.bg-purple { background: #ede9fe; color: #8b5cf6; }
 
-/* Footer */
+.data-table-wrap { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.data-table-wrap .table-header {
+    display: flex; justify-content: space-between; align-items: center; padding: 16px 20px;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 12px;
+}
+.data-table-wrap .table-header h3 { font-size: 1.05rem; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.data-table th { text-align: left; padding: 12px 16px; background: #f8fafc; color: var(--text-secondary); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.data-table tr:hover td { background: #f8faff; }
+.data-table .score-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;
+}
+.score-high { background: #d1fae5; color: #059669; }
+.score-mid { background: #fef3c7; color: #d97706; }
+.score-low { background: #fee2e2; color: #dc2626; }
+.chart-wrap {
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; margin-bottom: 24px;
+}
+.chart-wrap h3 { margin-bottom: 16px; font-size: 1.05rem; }
+.chart-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.chart-bar-label { width: 60px; text-align: right; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+.chart-bar-track { flex: 1; height: 24px; background: #f1f5f9; border-radius: 12px; overflow: hidden; }
+.chart-bar-fill { height: 100%; border-radius: 12px; transition: width 0.8s ease; display: flex; align-items: center; padding-left: 10px; font-size: 0.78rem; font-weight: 700; color: #fff; min-width: fit-content; }
+.chart-legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 12px; }
+.chart-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; }
+.chart-legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+.login-overlay {
+    position: fixed; inset: 0; background: rgba(15,23,42,0.95); z-index: 999;
+    display: flex; align-items: center; justify-content: center;
+}
+.login-box {
+    background: #fff; border-radius: 16px; padding: 40px; text-align: center; max-width: 400px; width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.login-box h2 { margin-bottom: 8px; }
+.login-box p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }
+.login-box input {
+    width: 100%; padding: 14px 18px; font-size: 1rem; border: 2px solid var(--border);
+    border-radius: 10px; outline: none; margin-bottom: 16px; text-align: center;
+}
+.login-box input:focus { border-color: var(--accent); }
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); }
+.empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+
+/* Chart - donut */
+.donut-chart { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
+.donut-svg { width: 160px; height: 160px; flex-shrink: 0; }
+.donut-legend { display: flex; flex-direction: column; gap: 10px; }
+.donut-legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+.donut-legend-dot { width: 14px; height: 14px; border-radius: 4px; }
+
+/* Print */
+@media print {
+    .header, .admin-sidebar, .btn, .nav-buttons, .progress-wrap, .admin-link { display: none !important; }
+    .admin-main { padding: 0 !important; }
+    .data-table-wrap { box-shadow: none !important; }
+}
+.modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 300;
+    display: flex; align-items: center; justify-content: center;
+}
+.modal-box {
+    background: #fff; border-radius: 16px; padding: 30px; max-width: 800px; width: 95%; max-height: 85vh;
+    overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.modal-box h3 { margin-bottom: 16px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.detail-item { padding: 6px 0; }
+.detail-item .lbl { font-size: 0.8rem; color: var(--text-secondary); }
+.detail-item .val { font-weight: 600; }
+.detail-questions { max-height: 400px; overflow-y: auto; }
+.detail-q {
+    padding: 10px; margin-bottom: 8px; border-radius: 8px; border: 1px solid var(--border);
+    font-size: 0.88rem;
+}
+.detail-q.correct { background: #f0fdf6; border-color: #bbf7d0; }
+.detail-q.wrong { background: #fef9f9; border-color: #fecaca; }
+
+@media (max-width: 768px) {
+    .admin-sidebar { display: none; }
+    .admin-main { padding: 16px; }
+    .data-table { font-size: 0.78rem; }
+    .data-table th, .data-table td { padding: 8px 10px; }
+    .admin-cards { grid-template-columns: repeat(2, 1fr); }
+}
 .footer { text-align: center; padding: 20px; color: #94a3b8; font-size: 0.8rem; }
 </style>
 </head>
-<body>
+<body id="bodyEl">
 
 <div class="header">
-    <h1>📋 4D标注规范 & 行车MAP 考核题库</h1>
-    <div class="subtitle">随机抽取20题 · 模拟考核练习</div>
+    <div>
+        <h1>📋 4D标注规范 & 行车MAP 考核题库</h1>
+        <div class="subtitle">随机抽取20题 · 模拟考核练习</div>
+    </div>
+    <button class="admin-link" onclick="goToAdmin()" title="管理后台">⚙️ 管理</button>
 </div>
 
-<div class="container">
+<div class="container" id="mainApp">
 
-    <!-- Start Screen -->
+    <!-- ==================== START SCREEN ==================== -->
     <div id="startScreen" class="start-screen">
         <div class="icon">📝</div>
         <h2>准备开始考核</h2>
@@ -305,12 +302,16 @@ body {
         <div class="stats">
             <div class="stat-card"><div class="num" id="totalCount">-</div><div class="label">题库总数</div></div>
             <div class="stat-card"><div class="num">20</div><div class="label">抽取题数</div></div>
-            <div class="stat-card"><div class="num" id="estTime">~20</div><div class="label">预计分钟</div></div>
+            <div class="stat-card"><div class="num" id="examHistoryCount">0</div><div class="label">历史考试</div></div>
+        </div>
+        <div class="name-input-wrap">
+            <input type="text" id="userNameInput" placeholder="请输入你的姓名" maxlength="30">
+            <div class="hint">请输入姓名以便管理后台统计成绩</div>
         </div>
         <button class="btn btn-primary" onclick="startExam()">🎯 开始答题</button>
     </div>
 
-    <!-- Exam Screen -->
+    <!-- ==================== EXAM SCREEN ==================== -->
     <div id="examScreen" style="display:none;">
         <div class="progress-wrap">
             <span style="font-size:1.2rem;">📊</span>
@@ -326,11 +327,12 @@ body {
         </div>
     </div>
 
-    <!-- Result Screen -->
+    <!-- ==================== RESULT SCREEN ==================== -->
     <div id="resultScreen" class="result-screen">
         <h2 style="margin-bottom:20px;">📊 考核结果</h2>
         <div class="score-circle" id="scoreCircle">0<span style="font-size:1rem;">分</span></div>
         <div class="result-summary">
+            <div class="result-row"><span>👤 考生</span><span class="val" id="resultName">-</span></div>
             <div class="result-row"><span>✅ 正确</span><span class="val green" id="correctCount">0</span></div>
             <div class="result-row"><span>❌ 错误</span><span class="val red" id="wrongCount">0</span></div>
             <div class="result-row"><span>📋 总题数</span><span class="val">20</span></div>
@@ -344,12 +346,50 @@ body {
 
 </div>
 
-<div class="footer">4D标注规范考试题 & 行车MAP考题 · 随机模拟考核系统</div>
+<!-- ==================== ADMIN DASHBOARD ==================== -->
+<div class="admin-wrapper" id="adminDashboard" style="display:none;">
+    <aside class="admin-sidebar">
+        <div class="logo">
+            <h2>📊 管理后台</h2>
+            <span>考试数据管理中心</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a class="active" onclick="switchAdminTab('overview', this)"><span class="icon">📈</span> 数据概览</a></li>
+            <li><a onclick="switchAdminTab('records', this)"><span class="icon">📋</span> 考试记录</a></li>
+            <li><a onclick="switchAdminTab('users', this)"><span class="icon">👥</span> 考生统计</a></li>
+            <li><a onclick="switchAdminTab('wrong', this)"><span class="icon">❌</span> 错题分析</a></li>
+            <li><a onclick="switchAdminTab('data', this)"><span class="icon">💾</span> 数据管理</a></li>
+        </ul>
+        <div style="padding:12px 20px;border-top:1px solid rgba(255,255,255,0.1);">
+            <button class="btn btn-sm" style="width:100%;background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);" onclick="exitAdmin()">↩ 返回考试系统</button>
+        </div>
+    </aside>
+
+    <main class="admin-main" id="adminMainContent"></main>
+</div>
+
+<!-- ==================== ADMIN LOGIN OVERLAY ==================== -->
+<div class="login-overlay" id="adminLoginOverlay" style="display:none;">
+    <div class="login-box">
+        <h2>🔐 管理员登录</h2>
+        <p>请输入管理密码以访问后台</p>
+        <input type="password" id="adminPasswordInput" placeholder="请输入管理密码" onkeydown="if(event.key==='Enter')adminLogin()">
+        <button class="btn btn-primary" onclick="adminLogin()" style="width:100%;">登 录</button>
+        <p style="font-size:0.78rem;color:#94a3b8;margin-top:12px;">默认密码：admin123</p>
+    </div>
+</div>
+
+<!-- ==================== DETAIL MODAL ==================== -->
+<div class="modal-overlay" id="detailModal" style="display:none;" onclick="if(event.target===this)closeDetailModal()">
+    <div class="modal-box" id="detailModalContent"></div>
+</div>
+
+<div class="footer" id="footerEl">4D标注规范考试题 & 行车MAP考题 · 随机模拟考核系统</div>
 
 <script>
 // ==================== QUESTION BANK ====================
 const questionBank = [
-    // ===== 4D标注规范考试题 - 单选题 =====
+    // 4D标注规范 - 单选题 (55)
     {id:1,type:"single",source:"4D标注规范",question:"标注范围的核心定义是？",options:["自车前150m，后50m，左右30m","自车前200m，后100m，左右50m","自车前300m，后150m，左右80m","自车前100m，后50m，左右30m"],answer:1},
     {id:2,type:"single",source:"4D标注规范",question:"关于轨迹长度要求，正确的是？",options:["轨迹长度＞100m即可标注","轨迹长度＞200m即可标注","轨迹长度＞300m才可标注","无长度要求"],answer:1},
     {id:3,type:"single",source:"4D标注规范",question:"忽略区域占比不应超过？",options:["20%","30%","40%","50%"],answer:2},
@@ -405,8 +445,7 @@ const questionBank = [
     {id:53,type:"single",source:"4D标注规范",question:"下列哪类场景标签\"未经过也需要标\"？",options:["路口调头","园区内部路","夜晚","路口左转"],answer:2},
     {id:54,type:"single",source:"4D标注规范",question:"场景标签多clip情况下，对于同一位置不同轨迹的标签，正确的是？",options:["只标一次","需要对每个场景标签框额外增加起始帧号","合并为1个","随机标注"],answer:1},
     {id:55,type:"single",source:"4D标注规范",question:"关于场景标签的\"起始帧\"，下列说法正确的是？",options:["自车轨迹进入对应场景框的起始帧号","场景结束帧","随机","第一帧"],answer:0},
-
-    // ===== 4D标注规范考试题 - 多选题 =====
+    // 4D标注规范 - 多选题 (10)
     {id:56,type:"multi",source:"4D标注规范",question:"车道线属性标注包括？（多选）",options:["实例id","车道线线型","鱼骨线型","标线颜色","方向"],answer:[0,1,2,3,4]},
     {id:57,type:"multi",source:"4D标注规范",question:"车道线\"线型\"包括？（多选）",options:["单实线","双实线","双虚线","路口待转线","导流线"],answer:[0,1,2,3,4]},
     {id:58,type:"multi",source:"4D标注规范",question:"车道中心线\"车道类型\"包括？（多选）",options:["Normal（常规车道）","Emergency（应急车道）","Bicycle（非机动车道）","Intersection（路口车道）","Reversible（潮汐车道）"],answer:[0,1,2,3,4]},
@@ -417,8 +456,7 @@ const questionBank = [
     {id:63,type:"multi",source:"4D标注规范",question:"一般障碍物子类别包括？（多选）",options:["锥桶","防撞桶","隔离柱","石墩","充电桩"],answer:[0,1,2,3,4]},
     {id:64,type:"multi",source:"4D标注规范",question:"下列哪些是V6.0版本新增的场景标签？（多选）",options:["高速收费站","高速道路分流","城区车道合流","城区驶入辅路","城区驶出辅路"],answer:[0,1,2,3,4]},
     {id:65,type:"multi",source:"4D标注规范",question:"关于\"高速被非锥桶的路沿隔开的部分\"，正确的是？（多选）",options:["需要标注","不需要标注","对向车道不标注","联通区域点云不清晰的情况下，也需要标注","不可以给忽略框"],answer:[1,2,3,4]},
-
-    // ===== 4D标注规范考试题 - 判断题 =====
+    // 4D标注规范 - 判断题 (12)
     {id:66,type:"judge",source:"4D标注规范",question:"标识重叠印刷或易混淆的场景，人能判断的标注新标识，人也无法判断的标注忽略。",answer:true},
     {id:67,type:"judge",source:"4D标注规范",question:"错位的实例先问再标。",answer:true},
     {id:68,type:"judge",source:"4D标注规范",question:"路边加油站内部的地面标识可以不标注，但路边的禁停区正常标注。",answer:true},
@@ -431,8 +469,7 @@ const questionBank = [
     {id:75,type:"judge",source:"4D标注规范",question:"2D清晰可见但3D点云不全的路面标识，根据2D脑补标注（没有40%一说）。",answer:true},
     {id:76,type:"judge",source:"4D标注规范",question:"潮汐车道，如果自车恰好在潮汐时段内逆向行驶时，正常标注。",answer:false},
     {id:77,type:"judge",source:"4D标注规范",question:"锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求。",answer:true},
-
-    // ===== 行车map考题-0713 - 单选题 =====
+    // 行车MAP - 单选题 (10)
     {id:78,type:"single",source:"行车MAP",question:"【行车MAP】关于待行区的标注方式描述正确的是？",options:["标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为直行","标注虚拟车道线，中心线的车道属性给待行区车道，连接类型为直行","路口拓扑挂接，车道属性给路口车道，连接类型为经过路口直行，不用画虚拟车道线","标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为经过路口直行"],answer:1},
     {id:79,type:"single",source:"行车MAP",question:"【行车MAP】关于连接类型描述正确的是？",options:["1→2左分叉；2→3直行；3→4、5经过路口左转；4→6、5→7经过路口左转","1→2经过路口左掉头；2→3经过路口左掉头；3→4、5经过路口左掉头；4→6、5→7经过路口左掉头","1→2左分叉；2→3经过路口左掉头；3→4、5经过路口左转；4→6、5→7经过路口左转","1→2左分叉；2→3直行；3→4、5左/右分叉；4→6、5→7左/右合并"],answer:0},
     {id:80,type:"single",source:"行车MAP",question:"【行车MAP】关于公交车框黄虚线的线型表达正确的是？",options:["画两根虚线，分别表达单虚线属性","画双线中间，表达双虚线属性","只画白虚线，忽略公交车框的黄虚线","画两根虚线，表达双虚线属性"],answer:2},
@@ -443,15 +480,13 @@ const questionBank = [
     {id:85,type:"single",source:"行车MAP",question:"【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",options:["车道1挂接左转左掉头，车道2挂接左转","车道1挂接左转左掉头，车道2挂接左转左掉头","车道1挂接左转，车道2挂接左转","车道1挂接左转，车道2挂接左转直行"],answer:0},
     {id:86,type:"single",source:"行车MAP",question:"【行车MAP】公交停靠站位置的车道类型是？",options:["公交专用道","常规车道","虚拟车道","非机动车道"],answer:1},
     {id:87,type:"single",source:"行车MAP",question:"【行车MAP】关于中心线车道转向说法正确的是？",options:["中心线1、2、3、4均为左转左掉头","中心线1、2、3、4转向都是左转","中心线1、2是直行，中心线3、4是左转","中心线1、2是直行，中心线3、4是左转、左掉头"],answer:3},
-
-    // ===== 行车map考题-0713 - 多选题 =====
+    // 行车MAP - 多选题 (5)
     {id:88,type:"multi",source:"行车MAP",question:"【行车MAP】下列关于失效的判断，说法正确的是？（多选）",options:["雨天、雪天、雾天的场景，在不影响标注的情况下正常标注即可，同时需要标注对应类型的场景框","直路的场景，如果整个任务都是纯直路，没有需求场景时才失效不标注","全图无任何标注元素的才失效不标注，如果仅无车道线时，需要按照车道均分进行脑补标注","行车map，只要车道旁侧出现了停车位，就直接失效不标","关于路口不全的失效判断，如果任务内出现了一处路口但无法标全，此时不可以直接失效不标，要判断一下除了这个路口之外的轨迹是否还有其他需求场景且满足了有效轨迹200m"],answer:[0,1,2,4]},
     {id:89,type:"multi",source:"行车MAP",question:"【行车MAP】路口内中心线不需要做哪些关联？（多选）",options:["左右车道","左右边界线","进入线","停止线"],answer:[0,1,2,3]},
     {id:90,type:"multi",source:"行车MAP",question:"【行车MAP】哪些情况中心线需要打断？（多选）",options:["边界线线型变化","地面箭头属性变化","路口","车道数变化","道路边缘线类型变化","游离线变化处"],answer:[0,1,2,3]},
     {id:91,type:"multi",source:"行车MAP",question:"【行车MAP】关于人行横道内的文字和箭头描述错误的是？（多选）",options:["被锥筒围起来的车道不标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景","忽略锥筒，车道线和中心线正常标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景","被锥筒围起来的车道只标注车道线，不标注中心线，需要标注锥筒线和外侧路沿","被锥筒围起来的车道不标注，但需要标注锥筒线，不标注外侧路沿和施工/改道场景"],answer:[0,2,3]},
     {id:92,type:"multi",source:"行车MAP",question:"【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",options:["上下行之间由护栏隔开","上下行之间由锥筒隔开","上下行之间由固定立柱隔开","上下行之间由导流区隔开"],answer:[0,2,3]},
-
-    // ===== 行车map考题-0713 - 判断题 =====
+    // 行车MAP - 判断题 (8)
     {id:93,type:"judge",source:"行车MAP",question:"【行车MAP】联通区画够50m，还需要往后额外画一个忽略框。",answer:false},
     {id:94,type:"judge",source:"行车MAP",question:"【行车MAP】关于闸机线的标注，作业范围内出现了闸机，结合2D图片和点云资料能标的均正常标注；实际有闸机主体但是无横杆的也正常标；闸机线无需关联在中心线上。",answer:true},
     {id:95,type:"judge",source:"行车MAP",question:"【行车MAP】道路两侧的道路边缘线方向需要与车道边界线方向保持一致。",answer:true},
@@ -462,11 +497,30 @@ const questionBank = [
     {id:100,type:"judge",source:"行车MAP",question:"【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",answer:true}
 ];
 
-// ==================== APP LOGIC ====================
+// ==================== STORAGE ====================
+const STORAGE_KEY = 'exam_results_v2';
+const ADMIN_PASSWORD = 'admin123';
+
+function getResults() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch(e) { return []; }
+}
+function saveResults(arr) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+function addResult(record) {
+    const results = getResults();
+    results.push(record);
+    saveResults(results);
+    updateHistoryCount();
+}
+
+// ==================== EXAM APP ====================
 let selectedQuestions = [];
 let currentIndex = 0;
-let userAnswers = {};       // {questionId: answer} — answer is index for single, [indices] for multi, bool for judge
+let userAnswers = {};
 let examSubmitted = false;
+let currentUserName = '';
 const TOTAL = 20;
 
 function shuffle(arr) {
@@ -480,9 +534,22 @@ function shuffle(arr) {
 
 function init() {
     document.getElementById('totalCount').textContent = questionBank.length;
+    updateHistoryCount();
+}
+
+function updateHistoryCount() {
+    document.getElementById('examHistoryCount').textContent = getResults().length;
 }
 
 function startExam() {
+    const nameInput = document.getElementById('userNameInput');
+    const name = nameInput.value.trim();
+    if (!name) {
+        showToast('请先输入你的姓名');
+        nameInput.focus();
+        return;
+    }
+    currentUserName = name;
     selectedQuestions = shuffle(questionBank).slice(0, TOTAL);
     currentIndex = 0;
     userAnswers = {};
@@ -512,20 +579,15 @@ function renderAllQuestions() {
                 </div>`;
         } else {
             optionsHtml = `<ul class="options">` + q.options.map((opt, oi) => {
-                const marker = String.fromCharCode(65 + oi); // A, B, C, D...
-                return `
-                <li class="option" onclick="selectOption(${q.id}, ${oi}, this)" data-qid="${q.id}" data-oidx="${oi}">
-                    <span class="option-marker">${marker}</span>
-                    <span class="option-label">${opt}</span>
-                </li>`;
+                const marker = String.fromCharCode(65 + oi);
+                return `<li class="option" onclick="selectOption(${q.id}, ${oi}, this)" data-qid="${q.id}" data-oidx="${oi}">
+                    <span class="option-marker">${marker}</span><span class="option-label">${opt}</span></li>`;
             }).join('') + '</ul>';
         }
-        return `
-        <div class="question-card" id="qcard-${q.id}" style="display:none;">
+        return `<div class="question-card" id="qcard-${q.id}" style="display:none;">
             <div class="question-header">
                 <div class="question-number">${idx + 1}</div>
-                <div class="question-text">
-                    ${q.question}
+                <div class="question-text">${q.question}
                     <span class="question-type ${typeClass}">${typeLabel}</span>
                     <span style="font-size:0.75rem;color:#94a3b8;margin-left:6px;">[${q.source}]</span>
                 </div>
@@ -537,13 +599,10 @@ function renderAllQuestions() {
 }
 
 function showQuestion(idx) {
-    // Hide all
     document.querySelectorAll('.question-card').forEach(c => c.style.display = 'none');
-    // Show current
     const q = selectedQuestions[idx];
     const card = document.getElementById('qcard-' + q.id);
     if (card) card.style.display = 'block';
-    // Restore visual state
     restoreVisualState(q.id);
     updateNavButtons();
     updateProgress();
@@ -553,14 +612,10 @@ function restoreVisualState(qid) {
     const q = selectedQuestions.find(q => q.id === qid);
     if (!q) return;
     const ans = userAnswers[qid];
-
     if (q.type === 'judge') {
-        const trueBtn = document.querySelector(`.true-btn[data-qid="${qid}"]`);
-        const falseBtn = document.querySelector(`.false-btn[data-qid="${qid}"]`);
-        if (trueBtn) trueBtn.classList.remove('selected');
-        if (falseBtn) falseBtn.classList.remove('selected');
-        if (ans === true && trueBtn) trueBtn.classList.add('selected');
-        if (ans === false && falseBtn) falseBtn.classList.add('selected');
+        document.querySelectorAll(`.true-btn[data-qid="${qid}"], .false-btn[data-qid="${qid}"]`).forEach(b => b.classList.remove('selected'));
+        if (ans === true) document.querySelector(`.true-btn[data-qid="${qid}"]`)?.classList.add('selected');
+        if (ans === false) document.querySelector(`.false-btn[data-qid="${qid}"]`)?.classList.add('selected');
     } else if (q.type === 'single') {
         document.querySelectorAll(`.option[data-qid="${qid}"]`).forEach(opt => {
             opt.classList.remove('selected');
@@ -578,7 +633,6 @@ function selectOption(qid, oidx, el) {
     if (examSubmitted) return;
     const q = selectedQuestions.find(q => q.id === qid);
     if (!q) return;
-
     if (q.type === 'single') {
         userAnswers[qid] = oidx;
         document.querySelectorAll(`.option[data-qid="${qid}"]`).forEach(o => o.classList.remove('selected'));
@@ -587,16 +641,9 @@ function selectOption(qid, oidx, el) {
         if (!userAnswers[qid]) userAnswers[qid] = [];
         const arr = userAnswers[qid];
         const idx = arr.indexOf(oidx);
-        if (idx >= 0) {
-            arr.splice(idx, 1);
-            el.classList.remove('selected');
-        } else {
-            arr.push(oidx);
-            el.classList.add('selected');
-        }
+        if (idx >= 0) { arr.splice(idx, 1); el.classList.remove('selected'); }
+        else { arr.push(oidx); el.classList.add('selected'); }
     }
-
-    // Mark card as answered
     updateCardStatus(qid);
     updateProgress();
 }
@@ -604,8 +651,7 @@ function selectOption(qid, oidx, el) {
 function selectJudge(qid, val, el) {
     if (examSubmitted) return;
     userAnswers[qid] = val;
-    document.querySelectorAll(`.true-btn[data-qid="${qid}"], .false-btn[data-qid="${qid}"]`)
-        .forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll(`.true-btn[data-qid="${qid}"], .false-btn[data-qid="${qid}"]`).forEach(b => b.classList.remove('selected'));
     el.classList.add('selected');
     updateCardStatus(qid);
     updateProgress();
@@ -613,18 +659,13 @@ function selectJudge(qid, val, el) {
 
 function updateCardStatus(qid) {
     const card = document.getElementById('qcard-' + qid);
-    if (card && userAnswers[qid] !== undefined) {
-        card.classList.add('answered');
-    }
+    if (card && userAnswers[qid] !== undefined) card.classList.add('answered');
 }
 
 function updateProgress() {
     const answered = Object.keys(userAnswers).length;
-    const pct = Math.round((answered / TOTAL) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressFill').style.width = Math.round((answered / TOTAL) * 100) + '%';
     document.getElementById('progressText').textContent = answered + ' / ' + TOTAL;
-    // Question indicator
-    document.getElementById('questionIndicator').textContent = `第 ${currentIndex + 1} / ${TOTAL} 题`;
 }
 
 function updateNavButtons() {
@@ -633,53 +674,33 @@ function updateNavButtons() {
     document.getElementById('nextBtn').style.display = isLast ? 'none' : '';
     document.getElementById('submitBtn').style.display = isLast ? 'inline-block' : 'none';
     document.getElementById('questionIndicator').textContent = `第 ${currentIndex + 1} / ${TOTAL} 题`;
-
-    // Check if all answered to enable submit
     if (isLast) {
         const allAnswered = Object.keys(userAnswers).length === TOTAL;
         document.getElementById('submitBtn').disabled = !allAnswered;
-        if (!allAnswered) {
-            document.getElementById('submitBtn').textContent = '⚠️ 还有题目未作答';
-            document.getElementById('submitBtn').style.opacity = '0.6';
-        } else {
-            document.getElementById('submitBtn').textContent = '✅ 提交答卷';
-            document.getElementById('submitBtn').style.opacity = '1';
-        }
+        document.getElementById('submitBtn').textContent = allAnswered ? '✅ 提交答卷' : '⚠️ 还有题目未作答';
+        document.getElementById('submitBtn').style.opacity = allAnswered ? '1' : '0.6';
     }
 }
 
-function nextQuestion() {
-    if (currentIndex < TOTAL - 1) {
-        currentIndex++;
-        showQuestion(currentIndex);
-    }
-}
+function nextQuestion() { if (currentIndex < TOTAL - 1) { currentIndex++; showQuestion(currentIndex); } }
+function prevQuestion() { if (currentIndex > 0) { currentIndex--; showQuestion(currentIndex); } }
 
-function prevQuestion() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        showQuestion(currentIndex);
-    }
-}
-
-// Keyboard navigation
 document.addEventListener('keydown', function(e) {
     if (document.getElementById('examScreen').style.display === 'none') return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextQuestion(); }
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevQuestion(); }
+    if (e.ctrlKey && e.key === 'Enter') {
+        e.preventDefault();
+        if (!examSubmitted && Object.keys(userAnswers).length === TOTAL) submitExam();
+    }
 });
 
 function submitExam() {
     const unanswered = TOTAL - Object.keys(userAnswers).length;
     if (unanswered > 0) {
-        showToast(`还有 ${unanswered} 道题未作答，请完成后再提交`);
-        // Jump to first unanswered
+        showToast(`还有 ${unanswered} 道题未作答`);
         for (let i = 0; i < TOTAL; i++) {
-            if (userAnswers[selectedQuestions[i].id] === undefined) {
-                currentIndex = i;
-                showQuestion(currentIndex);
-                break;
-            }
+            if (userAnswers[selectedQuestions[i].id] === undefined) { currentIndex = i; showQuestion(currentIndex); break; }
         }
         return;
     }
@@ -690,35 +711,48 @@ function submitExam() {
 
 function showResults() {
     let correct = 0, wrong = 0;
+    const gradings = [];
     selectedQuestions.forEach(q => {
         const userAns = userAnswers[q.id];
-        if (q.type === 'single') {
-            if (userAns === q.answer) correct++; else wrong++;
-        } else if (q.type === 'multi') {
-            const sortedUser = userAns ? userAns.slice().sort() : [];
-            const sortedCorrect = q.answer.slice().sort();
-            if (JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect)) correct++; else wrong++;
-        } else if (q.type === 'judge') {
-            if (userAns === q.answer) correct++; else wrong++;
-        }
+        let isCorrect = false;
+        if (q.type === 'single') isCorrect = userAns === q.answer;
+        else if (q.type === 'multi') {
+            const su = userAns ? userAns.slice().sort() : [];
+            const sc = q.answer.slice().sort();
+            isCorrect = JSON.stringify(su) === JSON.stringify(sc);
+        } else if (q.type === 'judge') isCorrect = userAns === q.answer;
+
+        if (isCorrect) correct++; else wrong++;
+        gradings.push({ qid: q.id, type: q.type, source: q.source, question: q.question, options: q.options, correctAnswer: q.answer, userAnswer: userAns || (q.type === 'multi' ? [] : null), isCorrect });
     });
 
     const score = Math.round((correct / TOTAL) * 100);
 
+    // Save to storage
+    const record = {
+        id: Date.now(),
+        userName: currentUserName,
+        timestamp: new Date().toISOString(),
+        score: score,
+        correct: correct,
+        wrong: wrong,
+        total: TOTAL,
+        questions: selectedQuestions.map(q => q.id),
+        gradings: gradings
+    };
+    addResult(record);
+
     document.getElementById('examScreen').style.display = 'none';
     document.getElementById('resultScreen').style.display = 'block';
+    document.getElementById('resultName').textContent = currentUserName;
     document.getElementById('scoreCircle').innerHTML = score + '<span style="font-size:1rem;">分</span>';
     document.getElementById('correctCount').textContent = correct + ' 题';
     document.getElementById('wrongCount').textContent = wrong + ' 题';
     document.getElementById('accuracy').textContent = score + '%';
-
-    // Color the score circle
     const circle = document.getElementById('scoreCircle');
-    if (score >= 90) circle.style.borderColor = '#10b981'; circle.style.color = '#10b981';
-    else if (score >= 60) circle.style.borderColor = '#f59e0b'; circle.style.color = '#f59e0b';
-    else circle.style.borderColor = '#ef4444'; circle.style.color = '#ef4444';
-
-    // Scroll to result
+    if (score >= 90) { circle.style.borderColor = '#10b981'; circle.style.color = '#10b981'; }
+    else if (score >= 60) { circle.style.borderColor = '#f59e0b'; circle.style.color = '#f59e0b'; }
+    else { circle.style.borderColor = '#ef4444'; circle.style.color = '#ef4444'; }
     document.getElementById('resultScreen').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -729,14 +763,17 @@ function reviewAnswers() {
     currentIndex = 0;
     showQuestion(0);
     updateNavButtons();
-
-    // Show all answers and explanations
     selectedQuestions.forEach(q => {
         const userAns = userAnswers[q.id];
         let isCorrect = false;
+        if (q.type === 'single') isCorrect = userAns === q.answer;
+        else if (q.type === 'multi') {
+            const su = userAns ? userAns.slice().sort() : [];
+            const sc = q.answer.slice().sort();
+            isCorrect = JSON.stringify(su) === JSON.stringify(sc);
+        } else if (q.type === 'judge') isCorrect = userAns === q.answer;
 
         if (q.type === 'single') {
-            isCorrect = userAns === q.answer;
             document.querySelectorAll(`.option[data-qid="${q.id}"]`).forEach(opt => {
                 opt.classList.add('disabled');
                 const oidx = parseInt(opt.dataset.oidx);
@@ -744,9 +781,6 @@ function reviewAnswers() {
                 if (oidx === userAns && !isCorrect) opt.classList.add('wrong-answer');
             });
         } else if (q.type === 'multi') {
-            const sortedUser = userAns ? userAns.slice().sort() : [];
-            const sortedCorrect = q.answer.slice().sort();
-            isCorrect = JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect);
             document.querySelectorAll(`.option[data-qid="${q.id}"]`).forEach(opt => {
                 opt.classList.add('disabled');
                 const oidx = parseInt(opt.dataset.oidx);
@@ -754,42 +788,22 @@ function reviewAnswers() {
                 if (userAns && userAns.includes(oidx) && !q.answer.includes(oidx)) opt.classList.add('wrong-answer');
             });
         } else if (q.type === 'judge') {
-            isCorrect = userAns === q.answer;
-            const trueBtn = document.querySelector(`.true-btn[data-qid="${q.id}"]`);
-            const falseBtn = document.querySelector(`.false-btn[data-qid="${q.id}"]`);
-            [trueBtn, falseBtn].forEach(b => { if (b) b.classList.add('disabled'); });
-            if (q.answer === true && trueBtn) trueBtn.classList.add('correct-answer');
-            if (q.answer === false && falseBtn) falseBtn.classList.add('correct-answer');
-            if (userAns === true && !isCorrect && trueBtn) trueBtn.classList.add('wrong-answer');
-            if (userAns === false && !isCorrect && falseBtn) falseBtn.classList.add('wrong-answer');
+            [document.querySelector(`.true-btn[data-qid="${q.id}"]`), document.querySelector(`.false-btn[data-qid="${q.id}"]`)].forEach(b => { if (b) b.classList.add('disabled'); });
+            if (q.answer === true) document.querySelector(`.true-btn[data-qid="${q.id}"]`)?.classList.add('correct-answer');
+            else document.querySelector(`.false-btn[data-qid="${q.id}"]`)?.classList.add('correct-answer');
+            if (userAns === true && !isCorrect) document.querySelector(`.true-btn[data-qid="${q.id}"]`)?.classList.add('wrong-answer');
+            if (userAns === false && !isCorrect) document.querySelector(`.false-btn[data-qid="${q.id}"]`)?.classList.add('wrong-answer');
         }
-
-        // Show explanation
         const explain = document.getElementById('explain-' + q.id);
         if (explain) {
             const markers = ['A','B','C','D','E','F'];
-            let correctAnsStr = '';
-            if (q.type === 'single') correctAnsStr = markers[q.answer];
-            else if (q.type === 'multi') correctAnsStr = q.answer.map(i => markers[i]).join('');
-            else correctAnsStr = q.answer ? '正确 ✅' : '错误 ❌';
-
-            explain.innerHTML = `
-                <strong>正确答案：</strong><span class="correct-ans">${correctAnsStr}</span>
-                ${q.type === 'multi' ? '<span style="font-size:0.8rem;color:#94a3b8;">（全选对才得分）</span>' : ''}
-                ${!isCorrect ? `<br><span style="color:#ef4444;">你的答案：${q.type === 'single' ? (userAns !== undefined ? markers[userAns] : '未作答') : q.type === 'multi' ? (userAns && userAns.length ? userAns.map(i => markers[i]).join('') : '未作答') : (userAns === true ? '正确' : userAns === false ? '错误' : '未作答')}</span>` : '<br><span style="color:#10b981;">✅ 回答正确</span>'}
-            `;
+            let correctAnsStr = q.type === 'single' ? markers[q.answer] : q.type === 'multi' ? q.answer.map(i => markers[i]).join('') : (q.answer ? '正确 ✅' : '错误 ❌');
+            explain.innerHTML = `<strong>正确答案：</strong><span class="correct-ans">${correctAnsStr}</span>${q.type === 'multi' ? '<span style="font-size:0.8rem;color:#94a3b8;">（全选对才得分）</span>' : ''}${!isCorrect ? `<br><span style="color:#ef4444;">你的答案：${q.type === 'single' ? (userAns !== undefined ? markers[userAns] : '未作答') : q.type === 'multi' ? (userAns && userAns.length ? userAns.map(i => markers[i]).join('') : '未作答') : (userAns === true ? '正确' : userAns === false ? '错误' : '未作答')}</span>` : '<br><span style="color:#10b981;">✅ 回答正确</span>'}`;
             explain.classList.add('show');
         }
-
-        // Card styling
         const card = document.getElementById('qcard-' + q.id);
-        if (card) {
-            if (isCorrect) card.classList.add('correct');
-            else card.classList.add('wrong');
-        }
+        if (card) { if (isCorrect) card.classList.add('correct'); else card.classList.add('wrong'); }
     });
-
-    // Update submit button text
     document.getElementById('submitBtn').style.display = 'none';
     document.getElementById('nextBtn').style.display = '';
     document.getElementById('prevBtn').style.display = '';
@@ -800,31 +814,477 @@ function retryExam() {
     document.getElementById('resultScreen').style.display = 'none';
     document.getElementById('examScreen').style.display = 'none';
     document.getElementById('startScreen').style.display = 'block';
-    selectedQuestions = [];
-    userAnswers = {};
-    examSubmitted = false;
-    currentIndex = 0;
+    selectedQuestions = []; userAnswers = {}; examSubmitted = false; currentIndex = 0;
+    updateHistoryCount();
 }
 
 function showToast(msg) {
     const existing = document.querySelector('.toast');
     if (existing) existing.remove();
     const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = msg;
+    toast.className = 'toast'; toast.textContent = msg;
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 2500);
 }
 
-// Keyboard shortcut for submit
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.key === 'Enter') {
-        e.preventDefault();
-        if (!examSubmitted && Object.keys(userAnswers).length === TOTAL) {
-            submitExam();
-        }
+// ==================== ADMIN DASHBOARD ====================
+let adminLoggedIn = false;
+let currentAdminTab = 'overview';
+
+function goToAdmin() {
+    if (!adminLoggedIn) {
+        document.getElementById('adminLoginOverlay').style.display = 'flex';
+        document.getElementById('adminPasswordInput').focus();
+        return;
     }
-});
+    showAdminDashboard();
+}
+
+function adminLogin() {
+    const pw = document.getElementById('adminPasswordInput').value;
+    if (pw === ADMIN_PASSWORD) {
+        adminLoggedIn = true;
+        document.getElementById('adminLoginOverlay').style.display = 'none';
+        document.getElementById('adminPasswordInput').value = '';
+        showAdminDashboard();
+    } else {
+        showToast('密码错误');
+        document.getElementById('adminPasswordInput').value = '';
+        document.getElementById('adminPasswordInput').focus();
+    }
+}
+
+function showAdminDashboard() {
+    document.getElementById('mainApp').style.display = 'none';
+    document.getElementById('footerEl').style.display = 'none';
+    document.getElementById('adminDashboard').style.display = 'flex';
+    document.querySelector('.header .admin-link').textContent = '🏠 首页';
+    document.querySelector('.header .admin-link').onclick = exitAdmin;
+    document.body.classList.add('admin-body');
+    renderAdminTab('overview');
+    // Activate first nav
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    document.querySelector('.sidebar-nav a').classList.add('active');
+}
+
+function exitAdmin() {
+    document.getElementById('mainApp').style.display = 'block';
+    document.getElementById('footerEl').style.display = 'block';
+    document.getElementById('adminDashboard').style.display = 'none';
+    document.querySelector('.header .admin-link').textContent = '⚙️ 管理';
+    document.querySelector('.header .admin-link').onclick = goToAdmin;
+    document.body.classList.remove('admin-body');
+}
+
+function switchAdminTab(tab, el) {
+    currentAdminTab = tab;
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    if (el) el.classList.add('active');
+    renderAdminTab(tab);
+}
+
+function renderAdminTab(tab) {
+    const results = getResults();
+    const main = document.getElementById('adminMainContent');
+
+    if (tab === 'overview') renderOverview(main, results);
+    else if (tab === 'records') renderRecords(main, results);
+    else if (tab === 'users') renderUsers(main, results);
+    else if (tab === 'wrong') renderWrongAnalysis(main, results);
+    else if (tab === 'data') renderDataManagement(main, results);
+}
+
+function renderOverview(main, results) {
+    const totalExams = results.length;
+    if (totalExams === 0) {
+        main.innerHTML = `<h2>📈 数据概览</h2><div class="empty-state"><div class="icon">📭</div><h3>暂无考试数据</h3><p>等待考生完成考试后，数据将自动汇总到此页面</p></div>`;
+        return;
+    }
+    const avgScore = Math.round(results.reduce((s, r) => s + r.score, 0) / totalExams);
+    const passCount = results.filter(r => r.score >= 60).length;
+    const highCount = results.filter(r => r.score >= 90).length;
+    const uniqueUsers = new Set(results.map(r => r.userName)).size;
+    const today = new Date().toISOString().slice(0, 10);
+    const todayExams = results.filter(r => r.timestamp.slice(0, 10) === today).length;
+
+    // Score distribution
+    const dist = { '90-100': 0, '80-89': 0, '70-79': 0, '60-69': 0, '0-59': 0 };
+    results.forEach(r => {
+        if (r.score >= 90) dist['90-100']++;
+        else if (r.score >= 80) dist['80-89']++;
+        else if (r.score >= 70) dist['70-79']++;
+        else if (r.score >= 60) dist['60-69']++;
+        else dist['0-59']++;
+    });
+    const maxDist = Math.max(1, ...Object.values(dist));
+
+    main.innerHTML = `
+        <h2>📈 数据概览</h2>
+        <div class="admin-cards">
+            <div class="admin-card"><div class="card-icon bg-blue">📝</div><div class="card-info"><div class="card-value">${totalExams}</div><div class="card-label">考试总次数</div></div></div>
+            <div class="admin-card"><div class="card-icon bg-green">📊</div><div class="card-info"><div class="card-value">${avgScore}%</div><div class="card-label">平均成绩</div></div></div>
+            <div class="admin-card"><div class="card-icon bg-purple">👥</div><div class="card-info"><div class="card-value">${uniqueUsers}</div><div class="card-label">考生人数</div></div></div>
+            <div class="admin-card"><div class="card-icon bg-orange">✅</div><div class="card-info"><div class="card-value">${passCount}</div><div class="card-label">及格人数(≥60)</div></div></div>
+            <div class="admin-card"><div class="card-icon bg-green">🏆</div><div class="card-info"><div class="card-value">${highCount}</div><div class="card-label">优秀人数(≥90)</div></div></div>
+            <div class="admin-card"><div class="card-icon bg-blue">📅</div><div class="card-info"><div class="card-value">${todayExams}</div><div class="card-label">今日考试</div></div></div>
+        </div>
+
+        <div class="chart-wrap">
+            <h3>📊 成绩分布</h3>
+            ${Object.entries(dist).map(([label, count]) => {
+                const pct = Math.round((count / maxDist) * 100);
+                const color = label === '90-100' ? '#10b981' : label === '80-89' ? '#4f6ef7' : label === '70-79' ? '#f59e0b' : label === '60-69' ? '#f97316' : '#ef4444';
+                return `<div class="chart-bar-row"><span class="chart-bar-label">${label}</span><div class="chart-bar-track"><div class="chart-bar-fill" style="width:${pct}%;background:${color};">${count}人</div></div></div>`;
+            }).join('')}
+        </div>
+
+        <div class="data-table-wrap">
+            <div class="table-header"><h3>📋 最近考试记录</h3></div>
+            <table class="data-table">
+                <thead><tr><th>时间</th><th>考生</th><th>成绩</th><th>正确</th><th>错误</th><th>操作</th></tr></thead>
+                <tbody>
+                    ${results.slice().reverse().slice(0, 10).map(r => `
+                        <tr>
+                            <td>${formatTime(r.timestamp)}</td>
+                            <td><strong>${escHtml(r.userName)}</strong></td>
+                            <td><span class="score-badge ${r.score >= 90 ? 'score-high' : r.score >= 60 ? 'score-mid' : 'score-low'}">${r.score}分</span></td>
+                            <td style="color:var(--success);">${r.correct}</td>
+                            <td style="color:var(--danger);">${r.wrong}</td>
+                            <td><button class="btn btn-xs btn-outline" onclick="viewDetail('${r.id}')">查看</button></td>
+                        </tr>
+                    `).join('')}
+                    ${results.length === 0 ? '<tr><td colspan="6" style="text-align:center;padding:30px;">暂无记录</td></tr>' : ''}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderRecords(main, results) {
+    if (results.length === 0) {
+        main.innerHTML = `<h2>📋 考试记录</h2><div class="empty-state"><div class="icon">📭</div><h3>暂无考试记录</h3></div>`;
+        return;
+    }
+    main.innerHTML = `
+        <h2>📋 考试记录 <span style="font-size:0.9rem;color:var(--text-secondary);">(共${results.length}条)</span></h2>
+        <div class="data-table-wrap">
+            <div class="table-header">
+                <h3>所有考试记录</h3>
+                <div>
+                    <input type="text" placeholder="搜索考生姓名..." oninput="filterRecords(this.value)" style="padding:8px 14px;border:1px solid var(--border);border-radius:8px;font-size:0.9rem;width:180px;">
+                    &nbsp;
+                    <button class="btn btn-xs btn-outline" onclick="exportCSV()">📥 导出CSV</button>
+                </div>
+            </div>
+            <table class="data-table" id="recordsTable">
+                <thead><tr><th>#</th><th>时间</th><th>考生</th><th>成绩</th><th>正确/错误</th><th>操作</th></tr></thead>
+                <tbody>
+                    ${results.slice().reverse().map((r, i) => `
+                        <tr data-name="${r.userName.toLowerCase()}">
+                            <td>${results.length - i}</td>
+                            <td>${formatTime(r.timestamp)}</td>
+                            <td><strong>${escHtml(r.userName)}</strong></td>
+                            <td><span class="score-badge ${r.score >= 90 ? 'score-high' : r.score >= 60 ? 'score-mid' : 'score-low'}">${r.score}分</span></td>
+                            <td>✅${r.correct} / ❌${r.wrong}</td>
+                            <td><button class="btn btn-xs btn-outline" onclick="viewDetail('${r.id}')">查看详情</button> <button class="btn btn-xs btn-danger" onclick="deleteRecord('${r.id}')">删除</button></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderUsers(main, results) {
+    if (results.length === 0) {
+        main.innerHTML = `<h2>👥 考生统计</h2><div class="empty-state"><div class="icon">👤</div><h3>暂无考生数据</h3></div>`;
+        return;
+    }
+    const userMap = {};
+    results.forEach(r => {
+        if (!userMap[r.userName]) userMap[r.userName] = [];
+        userMap[r.userName].push(r);
+    });
+    const users = Object.entries(userMap).sort((a, b) => {
+        const avgA = a[1].reduce((s,r) => s+r.score, 0) / a[1].length;
+        const avgB = b[1].reduce((s,r) => s+r.score, 0) / b[1].length;
+        return avgB - avgA;
+    });
+
+    main.innerHTML = `
+        <h2>👥 考生统计 <span style="font-size:0.9rem;color:var(--text-secondary);">(共${users.length}人)</span></h2>
+        <div class="data-table-wrap">
+            <table class="data-table">
+                <thead><tr><th>排名</th><th>姓名</th><th>考试次数</th><th>最高分</th><th>最低分</th><th>平均分</th><th>趋势</th><th>操作</th></tr></thead>
+                <tbody>
+                    ${users.map(([name, recs], i) => {
+                        const scores = recs.map(r => r.score);
+                        const avg = Math.round(scores.reduce((s,v) => s+v, 0) / scores.length);
+                        const max = Math.max(...scores);
+                        const min = Math.min(...scores);
+                        const trend = recs.length >= 2 ? (scores[scores.length-1] >= scores[scores.length-2] ? '📈' : '📉') : '—';
+                        return `<tr>
+                            <td>${i+1}</td>
+                            <td><strong>${escHtml(name)}</strong></td>
+                            <td>${recs.length}次</td>
+                            <td style="color:var(--success);font-weight:700;">${max}分</td>
+                            <td style="color:var(--danger);">${min}分</td>
+                            <td><span class="score-badge ${avg >= 90 ? 'score-high' : avg >= 60 ? 'score-mid' : 'score-low'}">${avg}分</span></td>
+                            <td>${trend}</td>
+                            <td><button class="btn btn-xs btn-outline" onclick="viewUserHistory('${escHtml(name).replace(/'/g, "\\'")}')">历史</button></td>
+                        </tr>`;
+                    }).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderWrongAnalysis(main, results) {
+    if (results.length === 0) {
+        main.innerHTML = `<h2>❌ 错题分析</h2><div class="empty-state"><div class="icon">📭</div><h3>暂无数据</h3></div>`;
+        return;
+    }
+    const wrongMap = {};
+    results.forEach(r => {
+        if (r.gradings) {
+            r.gradings.forEach(g => {
+                if (!g.isCorrect) {
+                    const key = g.qid;
+                    if (!wrongMap[key]) wrongMap[key] = { qid: g.qid, question: g.question, source: g.source, type: g.type, correctAnswer: g.correctAnswer, options: g.options, count: 0, users: [] };
+                    wrongMap[key].count++;
+                    if (!wrongMap[key].users.includes(r.userName)) wrongMap[key].users.push(r.userName);
+                }
+            });
+        }
+    });
+    const wrongList = Object.values(wrongMap).sort((a, b) => b.count - a.count);
+    const totalWrong = wrongList.reduce((s, w) => s + w.count, 0);
+
+    main.innerHTML = `
+        <h2>❌ 错题分析 <span style="font-size:0.9rem;color:var(--text-secondary);">(错题总数: ${totalWrong})</span></h2>
+        ${wrongList.length === 0 ? '<div class="empty-state"><div class="icon">🎉</div><h3>太棒了！没有错题</h3></div>' : `
+        <div class="data-table-wrap">
+            <table class="data-table">
+                <thead><tr><th>#</th><th>题目</th><th>来源</th><th>类型</th><th>正确答案</th><th>错误次数</th><th>错误率</th><th>出错考生</th></tr></thead>
+                <tbody>
+                    ${wrongList.map((w, i) => {
+                        const errorRate = Math.round((w.count / results.length) * 100);
+                        const markers = ['A','B','C','D','E','F'];
+                        const ansStr = w.type === 'single' ? markers[w.correctAnswer] : w.type === 'multi' ? w.correctAnswer.map(x => markers[x]).join('') : (w.correctAnswer ? '正确' : '错误');
+                        return `<tr>
+                            <td>${i+1}</td>
+                            <td style="max-width:300px;">${escHtml(w.question).substring(0, 80)}...</td>
+                            <td>${w.source}</td>
+                            <td>${w.type === 'single' ? '单选' : w.type === 'multi' ? '多选' : '判断'}</td>
+                            <td style="font-weight:700;color:var(--success);">${ansStr}</td>
+                            <td style="font-weight:700;color:var(--danger);">${w.count}</td>
+                            <td><span class="score-badge ${errorRate >= 50 ? 'score-low' : errorRate >= 30 ? 'score-mid' : 'score-high'}">${errorRate}%</span></td>
+                            <td style="font-size:0.82rem;">${w.users.join(', ')}</td>
+                        </tr>`;
+                    }).join('')}
+                </tbody>
+            </table>
+        </div>`}
+    `;
+}
+
+function renderDataManagement(main, results) {
+    main.innerHTML = `
+        <h2>💾 数据管理</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+            <div class="chart-wrap">
+                <h3>📥 导出数据</h3>
+                <p style="color:var(--text-secondary);margin-bottom:16px;">将所有考试数据导出为文件，方便备份或在不同设备间迁移。</p>
+                <button class="btn btn-primary btn-sm" onclick="exportJSON()">📥 导出 JSON（含详细答题记录）</button>
+                <button class="btn btn-outline btn-sm" onclick="exportCSV()" style="margin-left:8px;">📊 导出 CSV（Excel可打开）</button>
+                <button class="btn btn-outline btn-sm" onclick="window.print()" style="margin-left:8px;">🖨 打印报表</button>
+            </div>
+            <div class="chart-wrap">
+                <h3>📤 导入数据</h3>
+                <p style="color:var(--text-secondary);margin-bottom:16px;">从其他设备导出的 JSON 文件导入，合并到当前数据库。</p>
+                <input type="file" id="importFileInput" accept=".json" style="margin-bottom:8px;" onchange="importJSON(this)">
+                <br>
+                <span style="font-size:0.8rem;color:var(--text-secondary);">当前数据库共有 <strong>${results.length}</strong> 条考试记录</span>
+            </div>
+            <div class="chart-wrap" style="border:2px solid #fee2e2;">
+                <h3 style="color:var(--danger);">⚠️ 危险操作</h3>
+                <p style="color:var(--text-secondary);margin-bottom:16px;">删除所有考试数据，此操作不可撤销。</p>
+                <button class="btn btn-danger btn-sm" onclick="clearAllData()">🗑 清空所有数据</button>
+            </div>
+        </div>
+    `;
+}
+
+function viewDetail(id) {
+    const results = getResults();
+    const r = results.find(x => String(x.id) === String(id));
+    if (!r) return;
+
+    const markers = ['A','B','C','D','E','F'];
+    const detailHtml = `
+        <h3>📋 考试详情</h3>
+        <div class="detail-grid">
+            <div class="detail-item"><div class="lbl">考生</div><div class="val">${escHtml(r.userName)}</div></div>
+            <div class="detail-item"><div class="lbl">时间</div><div class="val">${formatTime(r.timestamp)}</div></div>
+            <div class="detail-item"><div class="lbl">成绩</div><div class="val" style="font-size:1.3rem;color:${r.score >= 90 ? 'var(--success)' : r.score >= 60 ? 'var(--warning)' : 'var(--danger)'};">${r.score}分</div></div>
+            <div class="detail-item"><div class="lbl">正确/错误</div><div class="val">✅${r.correct} / ❌${r.wrong}</div></div>
+        </div>
+        <h4 style="margin-bottom:8px;">答题明细</h4>
+        <div class="detail-questions">
+            ${(r.gradings || []).map(g => {
+                let ansStr = '';
+                if (g.type === 'single') ansStr = markers[g.correctAnswer];
+                else if (g.type === 'multi') ansStr = g.correctAnswer.map(x => markers[x]).join('');
+                else ansStr = g.correctAnswer ? '正确' : '错误';
+                let userStr = '';
+                if (g.type === 'single') userStr = g.userAnswer !== null && g.userAnswer !== undefined ? markers[g.userAnswer] : '未作答';
+                else if (g.type === 'multi') userStr = g.userAnswer && g.userAnswer.length ? g.userAnswer.map(x => markers[x]).join('') : '未作答';
+                else userStr = g.userAnswer === true ? '正确' : g.userAnswer === false ? '错误' : '未作答';
+                return `<div class="detail-q ${g.isCorrect ? 'correct' : 'wrong'}">
+                    <strong>${g.isCorrect ? '✅' : '❌'} ${escHtml(g.question).substring(0, 100)}</strong>
+                    <br>正确答案：<span style="color:var(--success);font-weight:700;">${ansStr}</span> | 你的答案：<span style="color:${g.isCorrect ? 'var(--success)' : 'var(--danger)'};">${userStr}</span>
+                </div>`;
+            }).join('')}
+            ${!r.gradings || r.gradings.length === 0 ? '<p style="color:var(--text-secondary);">该记录为旧版本数据，无详细答题记录</p>' : ''}
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="closeDetailModal()" style="margin-top:16px;">关闭</button>
+    `;
+
+    document.getElementById('detailModalContent').innerHTML = detailHtml;
+    document.getElementById('detailModal').style.display = 'flex';
+}
+
+function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; }
+
+function viewUserHistory(name) {
+    const results = getResults().filter(r => r.userName === name);
+    if (results.length === 0) return;
+    const markers = ['A','B','C','D','E','F'];
+    const latest = results[results.length - 1];
+    const html = `
+        <h3>👤 ${escHtml(name)} 的考试历史</h3>
+        <div class="detail-grid">
+            <div class="detail-item"><div class="lbl">考试次数</div><div class="val">${results.length}次</div></div>
+            <div class="detail-item"><div class="lbl">最高分</div><div class="val" style="color:var(--success);">${Math.max(...results.map(r=>r.score))}分</div></div>
+            <div class="detail-item"><div class="lbl">最低分</div><div class="val" style="color:var(--danger);">${Math.min(...results.map(r=>r.score))}分</div></div>
+            <div class="detail-item"><div class="lbl">平均分</div><div class="val">${Math.round(results.reduce((s,r)=>s+r.score,0)/results.length)}分</div></div>
+        </div>
+        <table class="data-table" style="margin-top:12px;">
+            <thead><tr><th>时间</th><th>成绩</th><th>正确/错误</th><th>操作</th></tr></thead>
+            <tbody>
+                ${results.reverse().map(r => `<tr>
+                    <td>${formatTime(r.timestamp)}</td>
+                    <td><span class="score-badge ${r.score>=90?'score-high':r.score>=60?'score-mid':'score-low'}">${r.score}分</span></td>
+                    <td>✅${r.correct} / ❌${r.wrong}</td>
+                    <td><button class="btn btn-xs btn-outline" onclick="viewDetail('${r.id}')">查看</button></td>
+                </tr>`).join('')}
+            </tbody>
+        </table>
+        <button class="btn btn-outline btn-sm" onclick="closeDetailModal()" style="margin-top:12px;">关闭</button>
+    `;
+    document.getElementById('detailModalContent').innerHTML = html;
+    document.getElementById('detailModal').style.display = 'flex';
+}
+
+function deleteRecord(id) {
+    if (!confirm('确定要删除这条考试记录吗？')) return;
+    let results = getResults();
+    results = results.filter(r => String(r.id) !== String(id));
+    saveResults(results);
+    renderAdminTab(currentAdminTab);
+    updateHistoryCount();
+    showToast('记录已删除');
+}
+
+function clearAllData() {
+    if (!confirm('⚠️ 确定要清空所有考试数据吗？\n\n此操作不可撤销！')) return;
+    if (!confirm('再次确认：清空所有数据？')) return;
+    saveResults([]);
+    renderAdminTab(currentAdminTab);
+    updateHistoryCount();
+    showToast('所有数据已清空');
+}
+
+function filterRecords(query) {
+    const rows = document.querySelectorAll('#recordsTable tbody tr');
+    rows.forEach(row => {
+        const name = row.dataset.name || '';
+        row.style.display = name.includes(query.toLowerCase()) ? '' : 'none';
+    });
+}
+
+function exportCSV() {
+    const results = getResults();
+    if (results.length === 0) { showToast('没有数据可导出'); return; }
+    let csv = '﻿时间,考生,成绩,正确数,错误数,答题详情\n';
+    results.forEach(r => {
+        const detail = (r.gradings || []).map(g => {
+            const markers = ['A','B','C','D','E','F'];
+            let ans = g.type === 'single' ? markers[g.correctAnswer] : g.type === 'multi' ? g.correctAnswer.map(x => markers[x]).join('') : (g.correctAnswer ? '对' : '错');
+            return `${g.isCorrect?'✓':'✗'} ${g.question.substring(0,30)}(${ans})`;
+        }).join('; ');
+        csv += `${formatTime(r.timestamp)},${r.userName},${r.score},${r.correct},${r.wrong},"${detail}"\n`;
+    });
+    downloadFile('exam_results.csv', csv, 'text/csv;charset=utf-8');
+}
+
+function exportJSON() {
+    const results = getResults();
+    if (results.length === 0) { showToast('没有数据可导出'); return; }
+    downloadFile('exam_results.json', JSON.stringify(results, null, 2), 'application/json');
+}
+
+function importJSON(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (!Array.isArray(data)) throw new Error('格式错误');
+            const existing = getResults();
+            const existingIds = new Set(existing.map(r => r.id));
+            let merged = 0;
+            data.forEach(r => {
+                if (!existingIds.has(r.id)) {
+                    existing.push(r);
+                    existingIds.add(r.id);
+                    merged++;
+                }
+            });
+            saveResults(existing);
+            renderAdminTab(currentAdminTab);
+            updateHistoryCount();
+            showToast(`导入成功！新增 ${merged} 条记录（跳过 ${data.length - merged} 条重复）`);
+        } catch (err) {
+            showToast('文件格式错误，请导入 .json 文件');
+        }
+    };
+    reader.readAsText(file);
+}
+
+function downloadFile(filename, content, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function formatTime(iso) {
+    const d = new Date(iso);
+    const pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function escHtml(s) {
+    const div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+}
 
 // Init
 init();
