@@ -175,6 +175,7 @@ body {
 .sidebar-nav li a .icon { font-size: 1.1rem; width: 24px; text-align: center; }
 .admin-main { flex: 1; padding: 24px 30px; overflow-y: auto; }
 .admin-main h2 { font-size: 1.5rem; margin-bottom: 20px; color: #1a1a2e; }
+#adminStatusBar { display: none; }
 .admin-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 30px; }
 .admin-card {
     background: #fff; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
@@ -365,7 +366,10 @@ body {
         </div>
     </aside>
 
-    <main class="admin-main" id="adminMainContent"></main>
+    <main class="admin-main">
+        <div id="adminStatusBar"></div>
+        <div id="adminContentBody"></div>
+    </main>
 </div>
 
 <!-- ==================== ADMIN LOGIN OVERLAY ==================== -->
@@ -386,7 +390,7 @@ body {
 
 <div class="footer" id="footerEl">4D标注规范考试题 & 行车MAP考题 · 随机模拟考核系统</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
 <script>
 // ==================== QUESTION BANK ====================
 const questionBank = [
@@ -948,30 +952,35 @@ function showAdminDashboard() {
 
 async function checkCloudConnection() {
     const sb = getSupabase();
-    let statusEl = document.getElementById('cloudStatus');
-    if (!statusEl) {
-        statusEl = document.createElement('div');
-        statusEl.id = 'cloudStatus';
-        statusEl.style.cssText = 'padding:10px 16px;margin:0 24px 16px;border-radius:8px;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:8px;justify-content:space-between;';
-        const mainContent = document.getElementById('adminMainContent');
-        if (mainContent) mainContent.prepend(statusEl);
-    }
+    const statusEl = document.getElementById('adminStatusBar');
+    if (!statusEl) return;
+    statusEl.style.cssText = 'padding:10px 16px;margin-bottom:16px;border-radius:8px;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:8px;justify-content:space-between;';
     if (sb) {
         try {
-            const { data, error } = await sb.from('exam_results').select('id', { count: 'exact', head: true });
+            const { data, error, count } = await sb.from('exam_results').select('*', { count: 'exact', head: true });
             if (error) throw error;
             const localCount = (JSON.parse(localStorage.getItem('exam_results_v2')) || []).length;
-            statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${data === null ? 0 : '—'}</strong> 条云端数据${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : ''}`;
+            statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${count}</strong> 条云端记录${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据到云端</button>` : '<span style="font-size:0.78rem;opacity:0.7;">数据自动同步</span>'}`;
             statusEl.style.background = '#d1fae5'; statusEl.style.color = '#065f46';
+            statusEl.style.display = 'flex';
         } catch(e) {
-            statusEl.innerHTML = '<span>⚠️ <strong>云数据库连接失败</strong> · 使用浏览器本地存储 · 数据不会跨设备共享</span>';
+            statusEl.innerHTML = `<span>⚠️ <strong>云数据库连接失败</strong> (${e.message||'网络错误'}) · 使用浏览器本地存储 · 数据不会跨设备共享</span><button class="btn btn-xs btn-outline" onclick="retryConnection()">🔄 重试</button>`;
             statusEl.style.background = '#fef3c7'; statusEl.style.color = '#92400e';
-            console.error('Cloud check:', e);
+            statusEl.style.display = 'flex';
+            console.error('Supabase error:', e);
         }
     } else {
         statusEl.innerHTML = '<span>💻 <strong>离网模式</strong> · Supabase SDK 未加载 · 使用浏览器本地存储</span>';
         statusEl.style.background = '#fee2e2'; statusEl.style.color = '#991b1b';
+        statusEl.style.display = 'flex';
     }
+}
+
+async function retryConnection() {
+    supabaseClient = null;
+    cachedResults = null;
+    await checkCloudConnection();
+    renderAdminTab(currentAdminTab);
 }
 
 async function syncLocalToCloud() {
@@ -1015,7 +1024,7 @@ function switchAdminTab(tab, el) {
 
 async function renderAdminTab(tab) {
     const results = await getResults(true);
-    const main = document.getElementById('adminMainContent');
+    const main = document.getElementById('adminContentBody');
 
     if (tab === 'overview') renderOverview(main, results);
     else if (tab === 'records') renderRecords(main, results);
