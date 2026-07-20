@@ -1,0 +1,336 @@
+{
+  "id": 1784540937880,
+  "userName": "商阴雷",
+  "timestamp": "2026-07-20T09:48:57.880Z",
+  "score": 85,
+  "correct": 17,
+  "wrong": 3,
+  "total": 20,
+  "questions": [
+    52,
+    44,
+    95,
+    15,
+    27,
+    41,
+    18,
+    46,
+    34,
+    73,
+    31,
+    21,
+    92,
+    55,
+    11,
+    71,
+    96,
+    65,
+    85,
+    91
+  ],
+  "gradings": [
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 44,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "公交车站地面标识符号，标注为？",
+      "options": [
+        "文字",
+        "禁停区",
+        "导流区",
+        "路面标识"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 95,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】道路两侧的道路边缘线方向需要与车道边界线方向保持一致。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 15,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面宽度小于5m的较窄双向道路上，车道中心线标记为？",
+      "options": [
+        "同向车道",
+        "双向车道",
+        "多个同向车道",
+        "不标注中心线"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 27,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于转向类型的判断依据，正确的是？",
+      "options": [
+        "仅看路面箭头",
+        "仅看拓扑",
+        "车道覆盖的路面箭头的属性 + 靠近路口且无道路分叉的拓扑",
+        "随机判断"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 41,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于减速线标注，正确的是？",
+      "options": [
+        "连续性减速线在道路内纵向出现长度＞10m时，不标注",
+        "不论长度都标注",
+        "长度＞5m才标注",
+        "仅标注起点"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 18,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线Y字形如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 46,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面标识2D清晰可见但3D完全没出现，距离<15m时？",
+      "options": [
+        "正常标注",
+        "不用脑补标注",
+        "数据反馈，整图暂不标注",
+        "局部标注"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 34,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "停止线的类型不包括？",
+      "options": [
+        "路口停止线",
+        "减速带",
+        "待转停止线",
+        "反光停止线"
+      ],
+      "correctAnswer": 3,
+      "userAnswer": 3,
+      "isCorrect": true
+    },
+    {
+      "qid": 73,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "2D遮挡程度和2D截断程度属性当前需要标注。",
+      "correctAnswer": false,
+      "userAnswer": true,
+      "isCorrect": false
+    },
+    {
+      "qid": 31,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口直行\"满射原则\"是指？",
+      "options": [
+        "进入车道与退出车道都需要被link连接，不能有遗漏",
+        "必须有交叉",
+        "倾斜连接",
+        "最短路径连接"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 21,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"粗实线\"的出现位置，正确的是？",
+      "options": [
+        "多见于普通道路",
+        "多见于隧道分叉合并处",
+        "多见于停车场",
+        "多见于路口"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 92,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",
+      "options": [
+        "上下行之间由护栏隔开",
+        "上下行之间由锥筒隔开",
+        "上下行之间由固定立柱隔开",
+        "上下行之间由导流区隔开"
+      ],
+      "correctAnswer": [
+        0,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        2,
+        3
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 55,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于场景标签的\"起始帧\"，下列说法正确的是？",
+      "options": [
+        "自车轨迹进入对应场景框的起始帧号",
+        "场景结束帧",
+        "随机",
+        "第一帧"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 11,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "双向超宽车道（>5m且<10m），需要在道路中间标注？",
+      "options": [
+        "1条虚拟车道线",
+        "2条虚拟车道线",
+        "3条虚拟车道线",
+        "不需要虚拟车道线"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": 1,
+      "isCorrect": false
+    },
+    {
+      "qid": 71,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "高速上很少有停止线，高速上的路段缝隙不是停止线。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 96,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 65,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "关于\"高速被非锥桶的路沿隔开的部分\"，正确的是？（多选）",
+      "options": [
+        "需要标注",
+        "不需要标注",
+        "对向车道不标注",
+        "联通区域点云不清晰的情况下，也需要标注",
+        "不可以给忽略框"
+      ],
+      "correctAnswer": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 85,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",
+      "options": [
+        "车道1挂接左转左掉头，车道2挂接左转",
+        "车道1挂接左转左掉头，车道2挂接左转左掉头",
+        "车道1挂接左转，车道2挂接左转",
+        "车道1挂接左转，车道2挂接左转直行"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 91,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于人行横道内的文字和箭头描述错误的是？（多选）",
+      "options": [
+        "被锥筒围起来的车道不标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景",
+        "忽略锥筒，车道线和中心线正常标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景",
+        "被锥筒围起来的车道只标注车道线，不标注中心线，需要标注锥筒线和外侧路沿",
+        "被锥筒围起来的车道不标注，但需要标注锥筒线，不标注外侧路沿和施工/改道场景"
+      ],
+      "correctAnswer": [
+        0,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        2,
+        3
+      ],
+      "isCorrect": true
+    }
+  ]
+}
