@@ -540,14 +540,17 @@ async function githubAPI(path, method = 'GET', body = null) {
 async function getResults(forceRefresh = false) {
     if (!forceRefresh && cachedResults && (Date.now() - cacheTime < 60000)) return cachedResults;
     try {
-        const resp = await fetch('https://raw.githubusercontent.com/' + GITHUB_REPO + '/master/' + DATA_FILE + '?t=' + Date.now());
-        if (!resp.ok) { cachedResults = []; cacheTime = Date.now(); return []; }
-        const results = await resp.json();
-        if (!Array.isArray(results)) { cachedResults = []; cacheTime = Date.now(); return []; }
-        results.sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
-        cachedResults = results; cacheTime = Date.now();
-        return results;
+        // Use GitHub API (same path as checkCloudConnection, proven reliable)
+        const { records } = await _readAllJSON();
+        if (!records || !Array.isArray(records) || records.length === 0) {
+            if (cachedResults && cachedResults.length > 0) return cachedResults; // keep old cache
+        }
+        records.sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+        cachedResults = records;
+        cacheTime = Date.now();
+        return records;
     } catch(e) {
+        console.error('getResults:', e);
         try { cachedResults = JSON.parse(localStorage.getItem('exam_results_v2')) || []; cacheTime = Date.now(); return cachedResults; }
         catch(e2) { return []; }
     }
