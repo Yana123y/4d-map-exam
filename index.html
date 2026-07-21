@@ -985,6 +985,8 @@ function adminLogin() {
     }
 }
 
+let _loadingPromise = null;
+
 function showAdminDashboard() {
     document.getElementById('mainApp').style.display = 'none';
     document.getElementById('footerEl').style.display = 'none';
@@ -992,15 +994,23 @@ function showAdminDashboard() {
     document.querySelector('.header .admin-link').textContent = '🏠 首页';
     document.querySelector('.header .admin-link').onclick = exitAdmin;
     document.body.classList.add('admin-body');
-    checkCloudConnection();
-    renderAdminTab('overview');
     document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
     document.querySelector('.sidebar-nav a').classList.add('active');
+    // Single load entry point: show skeleton, load once, then render
+    const main = document.getElementById('adminContentBody');
+    if (main) main.innerHTML = '<div style="text-align:center;padding:60px;color:var(--text-secondary);"><div style="font-size:3rem;margin-bottom:16px;">☁️</div><h3>加载考试数据...</h3><p style="font-size:0.85rem;">从云端同步所有考生记录</p></div>';
+    _loadingPromise = (async () => {
+        const count = await checkCloudConnection();
+        const results = await getResults(true);
+        const m = document.getElementById('adminContentBody');
+        if (m) renderTabContent('overview', m, results);
+    })();
+    _loadingPromise.catch(e => console.error('load error:', e));
 }
 
 async function checkCloudConnection() {
     const statusEl = document.getElementById('adminStatusBar');
-    if (!statusEl) return;
+    if (!statusEl) return 0;
     statusEl.style.cssText = 'padding:10px 16px;margin-bottom:16px;border-radius:8px;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:8px;justify-content:space-between;';
     try {
         const files = await githubAPI('contents/' + DATA_PATH);
@@ -1009,14 +1019,13 @@ async function checkCloudConnection() {
         statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${count}</strong> 条记录${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : '<span style="font-size:0.78rem;opacity:0.7;">数据自动同步 ✅</span>'}`;
         statusEl.style.background = '#d1fae5'; statusEl.style.color = '#065f46';
         statusEl.style.display = 'flex';
-        // Start loading data in background
-        getResults(true);
+        return count;
     } catch(e) {
         statusEl.innerHTML = `<span>⚠️ <strong>连接失败</strong> · 使用本地存储</span><button class="btn btn-xs btn-outline" onclick="retryConnection()">🔄 重试</button>`;
         statusEl.style.background = '#fef3c7'; statusEl.style.color = '#92400e';
         statusEl.style.display = 'flex';
+        return 0;
     }
-    return 0;
 }
 
 async function retryConnection() {
@@ -1046,8 +1055,10 @@ async function syncLocalToCloud() {
     }
     if (uploaded > 0) { localStorage.removeItem('exam_results_v2'); cachedResults = null; }
     showToast(`同步完成：✅ ${uploaded} 条成功${failed > 0 ? ` · ❌ ${failed} 条失败` : ''}`);
+    const results = await getResults(true);
+    const main = document.getElementById('adminContentBody');
+    if (main) renderTabContent(currentAdminTab, main, results);
     checkCloudConnection();
-    renderAdminTab(currentAdminTab);
 }
 
 function exitAdmin() {
@@ -1069,14 +1080,22 @@ function switchAdminTab(tab, el) {
 async function renderAdminTab(tab) {
     const main = document.getElementById('adminContentBody');
     if (!main) return;
-    // Show skeleton immediately
-    main.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ 加载中...</div>';
-    // Use cache if available for instant display
+    // If cache has data, render instantly
     if (cachedResults && cachedResults.length > 0) {
         renderTabContent(tab, main, cachedResults);
         return;
     }
-    // First load: show skeleton while fetching
+    // If loading is in progress, wait for it
+    if (_loadingPromise) {
+        main.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ 加载中...</div>';
+        await _loadingPromise;
+        if (cachedResults && cachedResults.length > 0) {
+            renderTabContent(tab, main, cachedResults);
+            return;
+        }
+    }
+    // Fallback: load directly
+    main.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ 加载中...</div>';
     const results = await getResults(true);
     renderTabContent(tab, main, results);
 }
@@ -1464,8 +1483,9 @@ async function importJSON(input) {
                 }
             }
             cachedResults = null;
-            await getResults(true);
-            renderAdminTab(currentAdminTab);
+            const results = await getResults(true);
+            const main = document.getElementById('adminContentBody');
+            if (main) renderTabContent(currentAdminTab, main, results);
             updateHistoryCount();
             showToast(`导入成功！新增 ${merged} 条记录（跳过 ${skipped} 条重复）`);
         } catch (err) {
