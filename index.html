@@ -560,9 +560,11 @@ async function _readAllJSON() {
     const detail = await githubAPI('contents/' + DATA_FILE);
     let records = [], sha = null;
     if (detail && detail.content) {
-        try { records = JSON.parse(atob(detail.content.replace(/\s/g, ''))); }
-        catch(e) {
-            try { records = JSON.parse(decodeURIComponent(escape(atob(detail.content.replace(/\s/g, ''))))); }
+        try {
+            // atob alone breaks UTF-8 Chinese — must decode properly
+            records = JSON.parse(decodeURIComponent(escape(atob(detail.content.replace(/\s/g, '')))));
+        } catch(e) {
+            try { records = JSON.parse(atob(detail.content.replace(/\s/g, ''))); }
             catch(e2) { records = []; }
         }
         sha = detail.sha;
@@ -975,8 +977,8 @@ async function checkCloudConnection() {
         const detailed = await githubAPI('contents/' + DATA_FILE);
         let count = 0;
         if (detailed && detailed.content) {
-            try { count = JSON.parse(atob(detailed.content.replace(/\s/g, ''))).length; }
-            catch(e) { try { count = JSON.parse(decodeURIComponent(escape(atob(detailed.content.replace(/\s/g, ''))))).length; } catch(e2) {} }
+            try { count = JSON.parse(decodeURIComponent(escape(atob(detailed.content.replace(/\s/g, ''))))).length; }
+            catch(e) { try { count = JSON.parse(atob(detailed.content.replace(/\s/g, ''))).length; } catch(e2) {} }
         }
         const localCount = (JSON.parse(localStorage.getItem('exam_results_v2')) || []).length;
         statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${count}</strong> 条记录${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : '<span style="font-size:0.78rem;opacity:0.7;">1次请求加载，秒开 ✅</span>'}`;
