@@ -1,0 +1,321 @@
+{
+  "id": 1784597072571,
+  "userName": "童旭",
+  "timestamp": "2026-07-21T01:24:32.571Z",
+  "score": 95,
+  "correct": 19,
+  "wrong": 1,
+  "total": 20,
+  "questions": [
+    52,
+    90,
+    66,
+    37,
+    24,
+    96,
+    7,
+    78,
+    21,
+    19,
+    18,
+    71,
+    44,
+    76,
+    17,
+    30,
+    42,
+    53,
+    45,
+    50
+  ],
+  "gradings": [
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 90,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】哪些情况中心线需要打断？（多选）",
+      "options": [
+        "边界线线型变化",
+        "地面箭头属性变化",
+        "路口",
+        "车道数变化",
+        "道路边缘线类型变化",
+        "游离线变化处"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        3,
+        2,
+        1,
+        0
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 66,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "标识重叠印刷或易混淆的场景，人能判断的标注新标识，人也无法判断的标注忽略。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 37,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于斑马线标注方向，正确的是？",
+      "options": [
+        "优先以车道方向左上角开始顺时针",
+        "右上角开始顺时针",
+        "左下角开始逆时针",
+        "随机"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 24,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口内的车道中心线需要绑定左右车道线吗？",
+      "options": [
+        "必须绑定",
+        "可选绑定",
+        "无需绑定，也无需绑定左右车道",
+        "仅绑定左侧"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 96,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 7,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于雨天、雪天、雾天场景，正确的是？",
+      "options": [
+        "必须标注",
+        "暂不用标注",
+        "雨天不标，雪天标",
+        "看时间段决定"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 78,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于待行区的标注方式描述正确的是？",
+      "options": [
+        "标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为直行",
+        "标注虚拟车道线，中心线的车道属性给待行区车道，连接类型为直行",
+        "路口拓扑挂接，车道属性给路口车道，连接类型为经过路口直行，不用画虚拟车道线",
+        "标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为经过路口直行"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 21,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "关于\"粗实线\"的出现位置，正确的是？",
+      "options": [
+        "多见于普通道路",
+        "多见于隧道分叉合并处",
+        "多见于停车场",
+        "多见于路口"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 19,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面车道线严重磨损时，标注规则是？",
+      "options": [
+        "不标注",
+        "正常标注，磨损属性给严重磨损",
+        "正常标注，磨损属性默认完全可见",
+        "模糊化处理"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 18,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线Y字形如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 71,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "高速上很少有停止线，高速上的路段缝隙不是停止线。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 44,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "公交车站地面标识符号，标注为？",
+      "options": [
+        "文字",
+        "禁停区",
+        "导流区",
+        "路面标识"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 76,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "潮汐车道，如果自车恰好在潮汐时段内逆向行驶时，正常标注。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 17,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "车道线V字形实线如何处理？",
+      "options": [
+        "标注为1条",
+        "拆分为2条",
+        "拆分为3条",
+        "整条断成3段"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 30,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口直行topo中\"对应原则\"是指？",
+      "options": [
+        "机动车道对机动车道，非机动车道对非机动车道",
+        "左车道对右车道",
+        "随机对应",
+        "距离最近对应"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 42,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "通用停止线与大车专用停止线同时出现时？",
+      "options": [
+        "都标注",
+        "仅标注通用停止线，大车专用停止线不标",
+        "仅标注大车专用",
+        "仅标文字"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 53,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签\"未经过也需要标\"？",
+      "options": [
+        "路口调头",
+        "园区内部路",
+        "夜晚",
+        "路口左转"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 45,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面标识2D清晰可见但3D完全没出现，距离>15m时？",
+      "options": [
+        "必须脑补标注",
+        "不用脑补标注，直接无视不标注",
+        "数据反馈",
+        "部分标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 50,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "一般障碍物的\"方向\"定义，正确的是？",
+      "options": [
+        "锥桶有方向要求",
+        "隔离柱有方向要求",
+        "锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求",
+        "所有障碍物都有方向要求"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    }
+  ]
+}
