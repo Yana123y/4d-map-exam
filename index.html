@@ -501,10 +501,11 @@ const questionBank = [
     {id:100,type:"judge",source:"行车MAP",question:"【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",answer:true}
 ];
 
-// ==================== GITHUB-BACKED CLOUD DATABASE ====================
+// ==================== CLOUD STORAGE (SINGLE AGGREGATE FILE) ====================
 // Token split to avoid GitHub push protection; reassembled at runtime
 const GITHUB_REPO = 'Yana123y/4d-map-exam';
 const DATA_PATH = 'exam-data';
+const DATA_FILE = 'exam-data/all.json';
 const ADMIN_PASSWORD = 'admin123';
 let cachedResults = null;
 let cacheTime = 0;
@@ -533,113 +534,59 @@ async function githubAPI(path, method = 'GET', body = null) {
     return resp.json();
 }
 
+// ==================== SINGLE-FILE STORAGE ====================
+// All records in one all.json → 1 fetch instead of 66
+
 async function getResults(forceRefresh = false) {
-    if (!forceRefresh && cachedResults && (Date.now() - cacheTime < 30000)) return cachedResults;
+    if (!forceRefresh && cachedResults && (Date.now() - cacheTime < 60000)) return cachedResults;
     try {
-        const files = await githubAPI('contents/' + DATA_PATH);
-        if (!files || !Array.isArray(files)) { cachedResults = []; cacheTime = Date.now(); return []; }
-        const jsonFiles = files.filter(f => f.name && f.name.endsWith('.json'));
-        if (jsonFiles.length === 0) { cachedResults = []; cacheTime = Date.now(); return []; }
-
-        // Fetch all files in parallel via raw endpoint (no API rate limit)
-        const results = await Promise.all(jsonFiles.map(async (f) => {
-            try {
-                const resp = await fetch(
-                    'https://raw.githubusercontent.com/' + GITHUB_REPO + '/master/' + DATA_PATH + '/' + f.name + '?t=' + Date.now()
-                );
-                if (!resp.ok) throw new Error('HTTP ' + resp.status);
-                const text = await resp.text();
-                return JSON.parse(text);
-            } catch(e) { return null; }
-        }));
-
-        const valid = results.filter(Boolean);
-        valid.sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
-        cachedResults = valid;
-        cacheTime = Date.now();
-        document.getElementById('adminStatusBar') && updateCachedCount();
-        return valid;
+        const resp = await fetch('https://raw.githubusercontent.com/' + GITHUB_REPO + '/master/' + DATA_FILE + '?t=' + Date.now());
+        if (!resp.ok) { cachedResults = []; cacheTime = Date.now(); return []; }
+        const results = await resp.json();
+        if (!Array.isArray(results)) { cachedResults = []; cacheTime = Date.now(); return []; }
+        results.sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+        cachedResults = results; cacheTime = Date.now();
+        return results;
     } catch(e) {
-        console.error('getResults error:', e);
         try { cachedResults = JSON.parse(localStorage.getItem('exam_results_v2')) || []; cacheTime = Date.now(); return cachedResults; }
         catch(e2) { return []; }
     }
 }
 
-async function updateCachedCount() {
-    const statusEl = document.getElementById('adminStatusBar');
-    if (statusEl && cachedResults) {
-        const count = cachedResults.length;
-        statusEl.innerHTML = `<span>☁️ <strong>云端已连接 (GitHub)</strong> · 共 <strong>${count}</strong> 条记录</span><span style="font-size:0.78rem;opacity:0.7;">数据自动同步 ✅</span>`;
-        statusEl.style.background = '#d1fae5'; statusEl.style.color = '#065f46';
-        statusEl.style.display = 'flex';
+async function _rwAll(transform, msg) {
+    const detail = await githubAPI('contents/' + DATA_FILE);
+    let records = [], sha = null;
+    if (detail && detail.content) {
+        try { records = JSON.parse(atob(detail.content.replace(/\s/g, ''))); }
+        catch(e) {
+            try { records = JSON.parse(decodeURIComponent(escape(atob(detail.content.replace(/\s/g, ''))))); }
+            catch(e2) { records = []; }
+        }
+        sha = detail.sha;
     }
+    records = transform(records);
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(records))));
+    await githubAPI('contents/' + DATA_FILE, 'PUT', { message: msg, content, branch: 'master', sha: sha || undefined });
+    cachedResults = null;
+    return true;
 }
 
 async function addResult(record) {
-    const filename = record.id + '.json';
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(record, null, 2))));
-    try {
-        await githubAPI('contents/' + DATA_PATH + '/' + filename, 'PUT', {
-            message: 'Add exam record: ' + record.userName + ' - ' + record.score + '分',
-            content: content,
-            branch: 'master'
-        });
-        cachedResults = null;
-        return true;
-    } catch(e) {
-        console.error('GitHub addResult:', e);
-        // Fallback
-        try {
-            const arr = JSON.parse(localStorage.getItem('exam_results_v2')) || [];
-            arr.push(record);
-            localStorage.setItem('exam_results_v2', JSON.stringify(arr));
-            return true;
-        } catch(e2) { return false; }
+    try { return await _rwAll(r => { r.push(record); return r; }, record.userName + ' - ' + record.score + '分'); }
+    catch(e) {
+        try { const arr = JSON.parse(localStorage.getItem('exam_results_v2')) || []; arr.push(record); localStorage.setItem('exam_results_v2', JSON.stringify(arr)); return true; }
+        catch(e2) { return false; }
     }
 }
 
 async function deleteRecordById(id) {
-    const filename = id + '.json';
-    try {
-        const existing = await githubAPI('contents/' + DATA_PATH + '/' + filename);
-        if (existing && existing.sha) {
-            await githubAPI('contents/' + DATA_PATH + '/' + filename, 'DELETE', {
-                message: 'Delete exam record: ' + id,
-                sha: existing.sha,
-                branch: 'master'
-            });
-        }
-        cachedResults = null;
-        return true;
-    } catch(e) {
-        console.error('GitHub delete:', e);
-        return true;
-    }
+    try { return await _rwAll(r => r.filter(x => String(x.id) !== String(id)), 'Delete ' + id); }
+    catch(e) { return true; }
 }
 
 async function clearAllRecords() {
-    try {
-        const files = await githubAPI('contents/' + DATA_PATH);
-        if (files && Array.isArray(files)) {
-            for (const f of files) {
-                if (f.name.endsWith('.json') && f.sha) {
-                    try {
-                        await githubAPI('contents/' + DATA_PATH + '/' + f.name, 'DELETE', {
-                            message: 'Batch delete exam record',
-                            sha: f.sha,
-                            branch: 'master'
-                        });
-                    } catch(e) {}
-                }
-            }
-        }
-        cachedResults = null;
-        return true;
-    } catch(e) {
-        console.error('GitHub clearAll:', e);
-        return true;
-    }
+    try { return await _rwAll(() => [], 'Clear all records'); }
+    catch(e) { return true; }
 }
 
 // ==================== EXAM APP ====================
@@ -1013,15 +960,19 @@ async function checkCloudConnection() {
     if (!statusEl) return 0;
     statusEl.style.cssText = 'padding:10px 16px;margin-bottom:16px;border-radius:8px;font-size:0.85rem;font-weight:600;display:flex;align-items:center;gap:8px;justify-content:space-between;';
     try {
-        const files = await githubAPI('contents/' + DATA_PATH);
-        const count = (files && Array.isArray(files)) ? files.filter(f => f.name && f.name.endsWith('.json')).length : 0;
+        const detailed = await githubAPI('contents/' + DATA_FILE);
+        let count = 0;
+        if (detailed && detailed.content) {
+            try { count = JSON.parse(atob(detailed.content.replace(/\s/g, ''))).length; }
+            catch(e) { try { count = JSON.parse(decodeURIComponent(escape(atob(detailed.content.replace(/\s/g, ''))))).length; } catch(e2) {} }
+        }
         const localCount = (JSON.parse(localStorage.getItem('exam_results_v2')) || []).length;
-        statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${count}</strong> 条记录${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : '<span style="font-size:0.78rem;opacity:0.7;">数据自动同步 ✅</span>'}`;
+        statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${count}</strong> 条记录${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : '<span style="font-size:0.78rem;opacity:0.7;">1次请求加载，秒开 ✅</span>'}`;
         statusEl.style.background = '#d1fae5'; statusEl.style.color = '#065f46';
         statusEl.style.display = 'flex';
         return count;
     } catch(e) {
-        statusEl.innerHTML = `<span>⚠️ <strong>连接失败</strong> · 使用本地存储</span><button class="btn btn-xs btn-outline" onclick="retryConnection()">🔄 重试</button>`;
+        statusEl.innerHTML = `<span>⚠️ <strong>连接失败</strong></span><button class="btn btn-xs btn-outline" onclick="retryConnection()">🔄 重试</button>`;
         statusEl.style.background = '#fef3c7'; statusEl.style.color = '#92400e';
         statusEl.style.display = 'flex';
         return 0;
@@ -1040,21 +991,25 @@ async function retryConnection() {
 async function syncLocalToCloud() {
     const local = JSON.parse(localStorage.getItem('exam_results_v2')) || [];
     if (local.length === 0) { showToast('没有需要同步的本地数据'); return; }
-    let uploaded = 0, failed = 0;
-    for (const r of local) {
-        const filename = r.id + '.json';
-        const content = btoa(unescape(encodeURIComponent(JSON.stringify(r))));
-        try {
-            await githubAPI('contents/' + DATA_PATH + '/' + filename, 'PUT', {
-                message: 'Sync exam record: ' + r.userName + ' - ' + r.score + '分',
-                content: content,
-                branch: 'master'
-            });
-            uploaded++;
-        } catch(e) { failed++; }
+    try {
+        const { records, sha } = await _readAllJSON();
+        const existingIds = new Set(records.map(r => r.id));
+        let added = 0;
+        for (const r of local) { if (!existingIds.has(r.id)) { records.push(r); added++; } }
+        if (added > 0) {
+            await _writeAllJSON(records, sha, 'Sync ' + added + ' local records');
+            localStorage.removeItem('exam_results_v2');
+        }
+        showToast(`同步完成：✅ ${added} 条上传 · 跳过 ${local.length - added} 条重复`);
+    } catch(e) {
+        let uploaded = 0, failed = 0;
+        for (const r of local) {
+            try { await addResult(r); uploaded++; } catch(e) { failed++; }
+        }
+        if (uploaded > 0) localStorage.removeItem('exam_results_v2');
+        showToast(`同步完成：✅ ${uploaded} 条${failed > 0 ? ` · ❌ ${failed} 条失败` : ''}`);
     }
-    if (uploaded > 0) { localStorage.removeItem('exam_results_v2'); cachedResults = null; }
-    showToast(`同步完成：✅ ${uploaded} 条成功${failed > 0 ? ` · ❌ ${failed} 条失败` : ''}`);
+    cachedResults = null;
     const results = await getResults(true);
     const main = document.getElementById('adminContentBody');
     if (main) renderTabContent(currentAdminTab, main, results);
@@ -1462,32 +1417,20 @@ async function importJSON(input) {
         try {
             const data = JSON.parse(e.target.result);
             if (!Array.isArray(data)) throw new Error('格式错误');
-            const existing = await getResults(true);
-            const existingIds = new Set(existing.map(r => r.id));
+            const { records, sha } = await _readAllJSON();
+            const existingIds = new Set(records.map(r => r.id));
             let merged = 0, skipped = 0;
             for (const r of data) {
                 if (existingIds.has(r.id)) { skipped++; continue; }
-                const filename = r.id + '.json';
-                const content = btoa(unescape(encodeURIComponent(JSON.stringify(r))));
-                try {
-                    await githubAPI('contents/' + DATA_PATH + '/' + filename, 'PUT', {
-                        message: 'Import exam record: ' + (r.userName || r.user_name) + ' - ' + (r.score) + '分',
-                        content: content,
-                        branch: 'master'
-                    });
-                    existingIds.add(r.id); merged++;
-                } catch(e) {
-                    // Fallback to localStorage
-                    const arr = JSON.parse(localStorage.getItem('exam_results_v2')) || [];
-                    if (!arr.some(x => x.id === r.id)) { arr.push(r); localStorage.setItem('exam_results_v2', JSON.stringify(arr)); merged++; }
-                }
+                records.push(r); existingIds.add(r.id); merged++;
             }
+            if (merged > 0) await _writeAllJSON(records, sha, 'Import ' + merged + ' records');
             cachedResults = null;
             const results = await getResults(true);
             const main = document.getElementById('adminContentBody');
             if (main) renderTabContent(currentAdminTab, main, results);
             updateHistoryCount();
-            showToast(`导入成功！新增 ${merged} 条记录（跳过 ${skipped} 条重复）`);
+            showToast(`导入成功！新增 ${merged} 条（跳过 ${skipped} 条重复）`);
         } catch (err) {
             showToast('文件格式错误，请导入 .json 文件');
         }
