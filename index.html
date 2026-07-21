@@ -506,6 +506,20 @@ const ADMIN_PASSWORD = 'admin123';
 let cachedResults = null;
 let cacheTime = 0;
 
+// Reliable UTF-8 ↔ base64 conversion (no escape/unescape bugs)
+function _b64enc(str) {
+    const bytes = new TextEncoder().encode(str);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+}
+function _b64dec(b64) {
+    const bin = atob(b64.replace(/\s/g, ''));
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+}
+
 function _token() {
     return ['ghp','txOqVjrHh3m24UhwInm7VdTIVqdpgf41Mjq1'].join('_');
 }
@@ -556,20 +570,15 @@ async function _readAllJSON() {
     const detail = await githubAPI('contents/' + DATA_FILE);
     let records = [], sha = null;
     if (detail && detail.content) {
-        try {
-            // atob alone breaks UTF-8 Chinese — must decode properly
-            records = JSON.parse(decodeURIComponent(escape(atob(detail.content.replace(/\s/g, '')))));
-        } catch(e) {
-            try { records = JSON.parse(atob(detail.content.replace(/\s/g, ''))); }
-            catch(e2) { records = []; }
-        }
+        try { records = JSON.parse(_b64dec(detail.content)); }
+        catch(e) { records = []; }
         sha = detail.sha;
     }
     return { records, sha };
 }
 
 async function _writeAllJSON(records, sha, msg) {
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(records))));
+    const content = _b64enc(JSON.stringify(records));
     return await githubAPI('contents/' + DATA_FILE, 'PUT', { message: msg, content, branch: 'master', sha: sha || undefined });
 }
 
@@ -974,8 +983,8 @@ async function checkCloudConnection() {
         const detailed = await githubAPI('contents/' + DATA_FILE);
         let count = 0;
         if (detailed && detailed.content) {
-            try { count = JSON.parse(decodeURIComponent(escape(atob(detailed.content.replace(/\s/g, ''))))).length; }
-            catch(e) { try { count = JSON.parse(atob(detailed.content.replace(/\s/g, ''))).length; } catch(e2) {} }
+            try { count = JSON.parse(_b64dec(detailed.content)).length; }
+            catch(e) {}
         }
         const localCount = (JSON.parse(localStorage.getItem('exam_results_v2')) || []).length;
         statusEl.innerHTML = `<span>☁️ <strong>云端已连接</strong> · 共 <strong>${count}</strong> 条记录${localCount > 0 ? ` · 💻 本地还有 <strong>${localCount}</strong> 条待同步` : ''}</span>${localCount > 0 ? `<button class="btn btn-xs btn-primary" onclick="syncLocalToCloud()">📤 同步本地数据</button>` : '<span style="font-size:0.78rem;opacity:0.7;">1次请求加载，秒开 ✅</span>'}`;
