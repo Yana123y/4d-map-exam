@@ -556,7 +556,7 @@ async function getResults(forceRefresh = false) {
     }
 }
 
-async function _rwAll(transform, msg) {
+async function _readAllJSON() {
     const detail = await githubAPI('contents/' + DATA_FILE);
     let records = [], sha = null;
     if (detail && detail.content) {
@@ -567,9 +567,18 @@ async function _rwAll(transform, msg) {
         }
         sha = detail.sha;
     }
-    records = transform(records);
+    return { records, sha };
+}
+
+async function _writeAllJSON(records, sha, msg) {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(records))));
-    await githubAPI('contents/' + DATA_FILE, 'PUT', { message: msg, content, branch: 'master', sha: sha || undefined });
+    return await githubAPI('contents/' + DATA_FILE, 'PUT', { message: msg, content, branch: 'master', sha: sha || undefined });
+}
+
+async function _rwAll(transform, msg) {
+    const { records, sha } = await _readAllJSON();
+    const updated = transform(records);
+    await _writeAllJSON(updated, sha, msg);
     cachedResults = null;
     return true;
 }
