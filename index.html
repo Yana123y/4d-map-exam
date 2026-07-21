@@ -449,7 +449,7 @@ const questionBank = [
     {id:53,type:"single",source:"4D标注规范",question:"下列哪类场景标签\"未经过也需要标\"？",options:["路口调头","园区内部路","夜晚","路口左转"],answer:2},
     {id:54,type:"single",source:"4D标注规范",question:"场景标签多clip情况下，对于同一位置不同轨迹的标签，正确的是？",options:["只标一次","需要对每个场景标签框额外增加起始帧号","合并为1个","随机标注"],answer:1},
     {id:55,type:"single",source:"4D标注规范",question:"关于场景标签的\"起始帧\"，下列说法正确的是？",options:["自车轨迹进入对应场景框的起始帧号","场景结束帧","随机","第一帧"],answer:0},
-    // 4D标注规范 - 多选题 (10)
+    // 4D标注规范 - 多选题 (9)
     {id:56,type:"multi",source:"4D标注规范",question:"车道线属性标注包括？（多选）",options:["实例id","车道线线型","鱼骨线型","标线颜色","方向"],answer:[0,1,2,3,4]},
     {id:57,type:"multi",source:"4D标注规范",question:"车道线\"线型\"包括？（多选）",options:["单实线","双实线","双虚线","路口待转线","导流线"],answer:[0,1,2,3,4]},
     {id:58,type:"multi",source:"4D标注规范",question:"车道中心线\"车道类型\"包括？（多选）",options:["Normal（常规车道）","Emergency（应急车道）","Bicycle（非机动车道）","Intersection（路口车道）","Reversible（潮汐车道）"],answer:[0,1,2,3,4]},
@@ -459,16 +459,12 @@ const questionBank = [
     {id:62,type:"multi",source:"4D标注规范",question:"停止线类型包括？（多选）",options:["路口停止线","待转停止线","减速带","进入线","闸机线"],answer:[0,1,2,3,4]},
     {id:63,type:"multi",source:"4D标注规范",question:"一般障碍物子类别包括？（多选）",options:["锥桶","防撞桶","隔离柱","石墩","充电桩"],answer:[0,1,2,3,4]},
     {id:64,type:"multi",source:"4D标注规范",question:"下列哪些是V6.0版本新增的场景标签？（多选）",options:["高速收费站","高速道路分流","城区车道合流","城区驶入辅路","城区驶出辅路"],answer:[0,1,2,3,4]},
-    {id:65,type:"multi",source:"4D标注规范",question:"关于\"高速被非锥桶的路沿隔开的部分\"，正确的是？（多选）",options:["需要标注","不需要标注","对向车道不标注","联通区域点云不清晰的情况下，也需要标注","不可以给忽略框"],answer:[1,2,3,4]},
-    // 4D标注规范 - 判断题 (12)
+    // 4D标注规范 - 判断题 (9)
     {id:66,type:"judge",source:"4D标注规范",question:"标识重叠印刷或易混淆的场景，人能判断的标注新标识，人也无法判断的标注忽略。",answer:true},
     {id:67,type:"judge",source:"4D标注规范",question:"错位的实例先问再标。",answer:true},
     {id:68,type:"judge",source:"4D标注规范",question:"路边加油站内部的地面标识可以不标注，但路边的禁停区正常标注。",answer:true},
     {id:69,type:"judge",source:"4D标注规范",question:"进入线为停止线的延长线，车道线和中心线需要与停止线吸附，无需和进入线吸附。",answer:true},
     {id:70,type:"judge",source:"4D标注规范",question:"路面标识的磨损情况当前需要详细标注。",answer:false},
-    {id:71,type:"judge",source:"4D标注规范",question:"高速上很少有停止线，高速上的路段缝隙不是停止线。",answer:true},
-    {id:72,type:"judge",source:"4D标注规范",question:"标牌背面2D和4D都不标注。",answer:true},
-    {id:73,type:"judge",source:"4D标注规范",question:"2D遮挡程度和2D截断程度属性当前需要标注。",answer:false},
     {id:74,type:"judge",source:"4D标注规范",question:"一般障碍物上\"车上的一般障碍物\"也需要标注。",answer:false},
     {id:75,type:"judge",source:"4D标注规范",question:"2D清晰可见但3D点云不全的路面标识，根据2D脑补标注（没有40%一说）。",answer:true},
     {id:76,type:"judge",source:"4D标注规范",question:"潮汐车道，如果自车恰好在潮汐时段内逆向行驶时，正常标注。",answer:false},
