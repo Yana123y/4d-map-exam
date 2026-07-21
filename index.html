@@ -474,31 +474,31 @@ const questionBank = [
     {id:76,type:"judge",source:"4D标注规范",question:"潮汐车道，如果自车恰好在潮汐时段内逆向行驶时，正常标注。",answer:false},
     {id:77,type:"judge",source:"4D标注规范",question:"锥桶、隔离柱、防撞桶、圆形石墩朝向不做要求。",answer:true},
     // 行车MAP - 单选题 (10)
-    {id:78,type:"single",source:"行车MAP",question:"【行车MAP】关于待行区的标注方式描述正确的是？",options:["标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为直行","标注虚拟车道线，中心线的车道属性给待行区车道，连接类型为直行","路口拓扑挂接，车道属性给路口车道，连接类型为经过路口直行，不用画虚拟车道线","标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为经过路口直行"],answer:1},
-    {id:79,type:"single",source:"行车MAP",question:"【行车MAP】关于连接类型描述正确的是？",options:["1→2左分叉；2→3直行；3→4、5经过路口左转；4→6、5→7经过路口左转","1→2经过路口左掉头；2→3经过路口左掉头；3→4、5经过路口左掉头；4→6、5→7经过路口左掉头","1→2左分叉；2→3经过路口左掉头；3→4、5经过路口左转；4→6、5→7经过路口左转","1→2左分叉；2→3直行；3→4、5左/右分叉；4→6、5→7左/右合并"],answer:0},
-    {id:80,type:"single",source:"行车MAP",question:"【行车MAP】关于公交车框黄虚线的线型表达正确的是？",options:["画两根虚线，分别表达单虚线属性","画双线中间，表达双虚线属性","只画白虚线，忽略公交车框的黄虚线","画两根虚线，表达双虚线属性"],answer:2},
-    {id:81,type:"single",source:"行车MAP",question:"【行车MAP】对于右转拓扑正确的是？",options:["进入1挂主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1","进入1挂主路0、主路1；进入0挂退出辅路0、主路0、主路1","进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0","进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1"],answer:2},
-    {id:82,type:"single",source:"行车MAP",question:"【行车MAP】关于石板路面的车道线标注，说法错误的是？",options:["车道线处虽无实际油漆标线，但是石板也需当作实线车道线标注","车道线处无实际油漆标线，此时车道线类型为虚拟车道线","图中停止线按实际位置标注在红色箭头处即可","车道线的几何不必为了吸附停止线而拖到红色箭头处"],answer:1},
-    {id:83,type:"single",source:"行车MAP",question:"【行车MAP】关于道路边缘线标注描述正确的是？",options:["标注为平路沿/自然边界","断开不标注","直接连过去，属性随前后","标注为虚拟路沿"],answer:1},
-    {id:84,type:"single",source:"行车MAP",question:"【行车MAP】关于水马/墙的道路边缘线描述正确的是？",options:["在中间标1条道路边缘线，属性给水马","在两侧各标1条道路边缘线，属性给水马","在两侧各标1条道路边缘线，属性给墙","在中间标1条道路边缘线，属性给墙"],answer:2},
-    {id:85,type:"single",source:"行车MAP",question:"【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",options:["车道1挂接左转左掉头，车道2挂接左转","车道1挂接左转左掉头，车道2挂接左转左掉头","车道1挂接左转，车道2挂接左转","车道1挂接左转，车道2挂接左转直行"],answer:0},
-    {id:86,type:"single",source:"行车MAP",question:"【行车MAP】公交停靠站位置的车道类型是？",options:["公交专用道","常规车道","虚拟车道","非机动车道"],answer:1},
-    {id:87,type:"single",source:"行车MAP",question:"【行车MAP】关于中心线车道转向说法正确的是？",options:["中心线1、2、3、4均为左转左掉头","中心线1、2、3、4转向都是左转","中心线1、2是直行，中心线3、4是左转","中心线1、2是直行，中心线3、4是左转、左掉头"],answer:3},
+    {id:78,type:"single",source:"行车MAP",image:"q78_q.jpg",image:"q78_q.jpg",question:"【行车MAP】关于待行区的标注方式描述正确的是？",options:["标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为直行","标注虚拟车道线，中心线的车道属性给待行区车道，连接类型为直行","路口拓扑挂接，车道属性给路口车道，连接类型为经过路口直行，不用画虚拟车道线","标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为经过路口直行"],answer:1},
+    {id:79,type:"single",source:"行车MAP",image:"q79_q.jpg",question:"【行车MAP】关于连接类型描述正确的是？",options:["1→2左分叉；2→3直行；3→4、5经过路口左转；4→6、5→7经过路口左转","1→2经过路口左掉头；2→3经过路口左掉头；3→4、5经过路口左掉头；4→6、5→7经过路口左掉头","1→2左分叉；2→3经过路口左掉头；3→4、5经过路口左转；4→6、5→7经过路口左转","1→2左分叉；2→3直行；3→4、5左/右分叉；4→6、5→7左/右合并"],answer:0},
+    {id:80,type:"single",source:"行车MAP",image:"q80_q.jpg",question:"【行车MAP】关于公交车框黄虚线的线型表达正确的是？",options:["画两根虚线，分别表达单虚线属性","画双线中间，表达双虚线属性","只画白虚线，忽略公交车框的黄虚线","画两根虚线，表达双虚线属性"],answer:2},
+    {id:81,type:"single",source:"行车MAP",image:"q81_q.jpg",question:"【行车MAP】对于右转拓扑正确的是？",options:["进入1挂主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1","进入1挂主路0、主路1；进入0挂退出辅路0、主路0、主路1","进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0","进入1挂辅路0、主路0、主路1、主路2；进入0挂退出辅路0、主路0、主路1"],answer:2},
+    {id:82,type:"single",source:"行车MAP",image:"q82_q.jpg",question:"【行车MAP】关于石板路面的车道线标注，说法错误的是？",options:["车道线处虽无实际油漆标线，但是石板也需当作实线车道线标注","车道线处无实际油漆标线，此时车道线类型为虚拟车道线","图中停止线按实际位置标注在红色箭头处即可","车道线的几何不必为了吸附停止线而拖到红色箭头处"],answer:1},
+    {id:83,type:"single",source:"行车MAP",image:"q83_q.jpg",question:"【行车MAP】关于道路边缘线标注描述正确的是？",options:["标注为平路沿/自然边界","断开不标注","直接连过去，属性随前后","标注为虚拟路沿"],answer:1},
+    {id:84,type:"single",source:"行车MAP",image:"q84_q.jpg",question:"【行车MAP】关于水马/墙的道路边缘线描述正确的是？",options:["在中间标1条道路边缘线，属性给水马","在两侧各标1条道路边缘线，属性给水马","在两侧各标1条道路边缘线，属性给墙","在中间标1条道路边缘线，属性给墙"],answer:2},
+    {id:85,type:"single",source:"行车MAP",image:"q85_q.jpg",question:"【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",options:["车道1挂接左转左掉头，车道2挂接左转","车道1挂接左转左掉头，车道2挂接左转左掉头","车道1挂接左转，车道2挂接左转","车道1挂接左转，车道2挂接左转直行"],answer:0},
+    {id:86,type:"single",source:"行车MAP",image:"q86_q.jpg",question:"【行车MAP】公交停靠站位置的车道类型是？",options:["公交专用道","常规车道","虚拟车道","非机动车道"],answer:1},
+    {id:87,type:"single",source:"行车MAP",image:"q87_q.jpg",question:"【行车MAP】关于中心线车道转向说法正确的是？",options:["中心线1、2、3、4均为左转左掉头","中心线1、2、3、4转向都是左转","中心线1、2是直行，中心线3、4是左转","中心线1、2是直行，中心线3、4是左转、左掉头"],answer:3},
     // 行车MAP - 多选题 (5)
     {id:88,type:"multi",source:"行车MAP",question:"【行车MAP】下列关于失效的判断，说法正确的是？（多选）",options:["雨天、雪天、雾天的场景，在不影响标注的情况下正常标注即可，同时需要标注对应类型的场景框","直路的场景，如果整个任务都是纯直路，没有需求场景时才失效不标注","全图无任何标注元素的才失效不标注，如果仅无车道线时，需要按照车道均分进行脑补标注","行车map，只要车道旁侧出现了停车位，就直接失效不标","关于路口不全的失效判断，如果任务内出现了一处路口但无法标全，此时不可以直接失效不标，要判断一下除了这个路口之外的轨迹是否还有其他需求场景且满足了有效轨迹200m"],answer:[0,1,2,4]},
     {id:89,type:"multi",source:"行车MAP",question:"【行车MAP】路口内中心线不需要做哪些关联？（多选）",options:["左右车道","左右边界线","进入线","停止线"],answer:[0,1,2,3]},
     {id:90,type:"multi",source:"行车MAP",question:"【行车MAP】哪些情况中心线需要打断？（多选）",options:["边界线线型变化","地面箭头属性变化","路口","车道数变化","道路边缘线类型变化","游离线变化处"],answer:[0,1,2,3]},
-    {id:91,type:"multi",source:"行车MAP",question:"【行车MAP】关于人行横道内的文字和箭头描述错误的是？（多选）",options:["被锥筒围起来的车道不标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景","忽略锥筒，车道线和中心线正常标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景","被锥筒围起来的车道只标注车道线，不标注中心线，需要标注锥筒线和外侧路沿","被锥筒围起来的车道不标注，但需要标注锥筒线，不标注外侧路沿和施工/改道场景"],answer:[0,2,3]},
-    {id:92,type:"multi",source:"行车MAP",question:"【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",options:["上下行之间由护栏隔开","上下行之间由锥筒隔开","上下行之间由固定立柱隔开","上下行之间由导流区隔开"],answer:[0,2,3]},
+    {id:91,type:"multi",source:"行车MAP",image:"q91_q.jpg",question:"【行车MAP】关于人行横道内的文字和箭头描述错误的是？（多选）",options:["被锥筒围起来的车道不标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景","忽略锥筒，车道线和中心线正常标注，需要标注锥筒线和外侧路沿以及标注施工/改道场景","被锥筒围起来的车道只标注车道线，不标注中心线，需要标注锥筒线和外侧路沿","被锥筒围起来的车道不标注，但需要标注锥筒线，不标注外侧路沿和施工/改道场景"],answer:[0,2,3]},
+    {id:92,type:"multi",source:"行车MAP",image:"q92_q.jpg",question:"【行车MAP】上下行之间不需要关联逆向左车道的场景是？（多选）",options:["上下行之间由护栏隔开","上下行之间由锥筒隔开","上下行之间由固定立柱隔开","上下行之间由导流区隔开"],answer:[0,2,3]},
     // 行车MAP - 判断题 (8)
     {id:93,type:"judge",source:"行车MAP",question:"【行车MAP】联通区画够50m，还需要往后额外画一个忽略框。",answer:false},
     {id:94,type:"judge",source:"行车MAP",question:"【行车MAP】关于闸机线的标注，作业范围内出现了闸机，结合2D图片和点云资料能标的均正常标注；实际有闸机主体但是无横杆的也正常标；闸机线无需关联在中心线上。",answer:true},
-    {id:95,type:"judge",source:"行车MAP",question:"【行车MAP】道路两侧的道路边缘线方向需要与车道边界线方向保持一致。",answer:true},
+    {id:95,type:"judge",source:"行车MAP",image:"q95_q.jpg",question:"【行车MAP】道路两侧的道路边缘线方向需要与车道边界线方向保持一致。",answer:true},
     {id:96,type:"judge",source:"行车MAP",question:"【行车MAP】被硬隔离隔开的非机动不需要制作且忽略框也不需要画。",answer:true},
-    {id:97,type:"judge",source:"行车MAP",question:"【行车MAP】采集车由主路开往匝道，此时需要同时标注高速道路分流场景和上匝道场景。",answer:false},
+    {id:97,type:"judge",source:"行车MAP",image:"q97_q.jpg",question:"【行车MAP】采集车由主路开往匝道，此时需要同时标注高速道路分流场景和上匝道场景。",answer:false},
     {id:98,type:"judge",source:"行车MAP",question:"【行车MAP】路口前地面无箭头时，根据路口实际拓扑给转向。",answer:true},
-    {id:99,type:"judge",source:"行车MAP",question:"【行车MAP】关于非机动车道的路口拓扑，无地面实际箭头时，连接原则为拓扑直行和右转即可。",answer:true},
-    {id:100,type:"judge",source:"行车MAP",question:"【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",answer:true}
+    {id:99,type:"judge",source:"行车MAP",image:"q99_q.jpg",question:"【行车MAP】关于非机动车道的路口拓扑，无地面实际箭头时，连接原则为拓扑直行和右转即可。",answer:true},
+    {id:100,type:"judge",source:"行车MAP",image:"q100_q.jpg",question:"【行车MAP】截图中箭头处视为安全岛，需要表达禁止通行区域，文字也需正常标注。",answer:true}
 ];
 
 // ==================== CLOUD STORAGE (SINGLE AGGREGATE FILE) ====================
@@ -682,6 +682,7 @@ function renderAllQuestions() {
                     <span style="font-size:0.75rem;color:#94a3b8;margin-left:6px;">[${q.source}]</span>
                 </div>
             </div>
+            ${q.image ? `<div style="margin-bottom:16px;text-align:center;"><img src="images/${q.image}" alt="题目图片" style="max-width:100%;max-height:400px;border-radius:8px;border:1px solid var(--border);" loading="lazy" onerror="this.style.display='none'"></div>` : ''}
             ${optionsHtml}
             <div class="explanation" id="explain-${q.id}"></div>
         </div>`;
