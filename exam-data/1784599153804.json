@@ -1,0 +1,351 @@
+{
+  "id": 1784599153804,
+  "userName": "童旭",
+  "timestamp": "2026-07-21T01:59:13.804Z",
+  "score": 95,
+  "correct": 19,
+  "wrong": 1,
+  "total": 20,
+  "questions": [
+    56,
+    90,
+    38,
+    24,
+    93,
+    42,
+    94,
+    52,
+    85,
+    69,
+    64,
+    89,
+    26,
+    12,
+    71,
+    84,
+    78,
+    66,
+    46,
+    45
+  ],
+  "gradings": [
+    {
+      "qid": 56,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "车道线属性标注包括？（多选）",
+      "options": [
+        "实例id",
+        "车道线线型",
+        "鱼骨线型",
+        "标线颜色",
+        "方向"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 90,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】哪些情况中心线需要打断？（多选）",
+      "options": [
+        "边界线线型变化",
+        "地面箭头属性变化",
+        "路口",
+        "车道数变化",
+        "道路边缘线类型变化",
+        "游离线变化处"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 38,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "斑马线跨越双车道时，标注起点是？",
+      "options": [
+        "从左侧车道开始",
+        "从右侧车道开始",
+        "以自车所在车道行驶方向（自车位置）和左上角点开始顺时针",
+        "从斑马线中心开始"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 24,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路口内的车道中心线需要绑定左右车道线吗？",
+      "options": [
+        "必须绑定",
+        "可选绑定",
+        "无需绑定，也无需绑定左右车道",
+        "仅绑定左侧"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 93,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】联通区画够50m，还需要往后额外画一个忽略框。",
+      "correctAnswer": false,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 42,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "通用停止线与大车专用停止线同时出现时？",
+      "options": [
+        "都标注",
+        "仅标注通用停止线，大车专用停止线不标",
+        "仅标注大车专用",
+        "仅标文字"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 94,
+      "type": "judge",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于闸机线的标注，作业范围内出现了闸机，结合2D图片和点云资料能标的均正常标注；实际有闸机主体但是无横杆的也正常标；闸机线无需关联在中心线上。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 52,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "下列哪类场景标签需要\"自车经过才需要标\"？",
+      "options": [
+        "城区道路",
+        "夜晚",
+        "路口直行",
+        "雨雪天气"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 85,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】两个左转车道（无禁止掉头标识），路口拓扑连接描述正确的是？",
+      "options": [
+        "车道1挂接左转左掉头，车道2挂接左转",
+        "车道1挂接左转左掉头，车道2挂接左转左掉头",
+        "车道1挂接左转，车道2挂接左转",
+        "车道1挂接左转，车道2挂接左转直行"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 69,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "进入线为停止线的延长线，车道线和中心线需要与停止线吸附，无需和进入线吸附。",
+      "correctAnswer": true,
+      "userAnswer": null,
+      "isCorrect": false
+    },
+    {
+      "qid": 64,
+      "type": "multi",
+      "source": "4D标注规范",
+      "question": "下列哪些是V6.0版本新增的场景标签？（多选）",
+      "options": [
+        "高速收费站",
+        "高速道路分流",
+        "城区车道合流",
+        "城区驶入辅路",
+        "城区驶出辅路"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "userAnswer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 89,
+      "type": "multi",
+      "source": "行车MAP",
+      "question": "【行车MAP】路口内中心线不需要做哪些关联？（多选）",
+      "options": [
+        "左右车道",
+        "左右边界线",
+        "进入线",
+        "停止线"
+      ],
+      "correctAnswer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "userAnswer": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "isCorrect": true
+    },
+    {
+      "qid": 26,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "\"左车道\"在什么情况下不挂接？",
+      "options": [
+        "有护栏、锥桶线被硬隔离隔开",
+        "同向车道",
+        "双向车道",
+        "路口内"
+      ],
+      "correctAnswer": 0,
+      "userAnswer": null,
+      "isCorrect": true
+    },
+    {
+      "qid": 12,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "三线场景拆分原则，正确的是？",
+      "options": [
+        "拆分成2条单线1条双线",
+        "拆成1条单线1条双线，自车内侧为单线，外侧为双线",
+        "拆成3条单线",
+        "拆成1条三线标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 71,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "高速上很少有停止线，高速上的路段缝隙不是停止线。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 84,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于水马/墙的道路边缘线描述正确的是？",
+      "options": [
+        "在中间标1条道路边缘线，属性给水马",
+        "在两侧各标1条道路边缘线，属性给水马",
+        "在两侧各标1条道路边缘线，属性给墙",
+        "在中间标1条道路边缘线，属性给墙"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 78,
+      "type": "single",
+      "source": "行车MAP",
+      "question": "【行车MAP】关于待行区的标注方式描述正确的是？",
+      "options": [
+        "标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为直行",
+        "标注虚拟车道线，中心线的车道属性给待行区车道，连接类型为直行",
+        "路口拓扑挂接，车道属性给路口车道，连接类型为经过路口直行，不用画虚拟车道线",
+        "标注虚拟车道线，中心线的车道属性给虚拟车道，连接类型为经过路口直行"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    },
+    {
+      "qid": 66,
+      "type": "judge",
+      "source": "4D标注规范",
+      "question": "标识重叠印刷或易混淆的场景，人能判断的标注新标识，人也无法判断的标注忽略。",
+      "correctAnswer": true,
+      "userAnswer": true,
+      "isCorrect": true
+    },
+    {
+      "qid": 46,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面标识2D清晰可见但3D完全没出现，距离<15m时？",
+      "options": [
+        "正常标注",
+        "不用脑补标注",
+        "数据反馈，整图暂不标注",
+        "局部标注"
+      ],
+      "correctAnswer": 2,
+      "userAnswer": 2,
+      "isCorrect": true
+    },
+    {
+      "qid": 45,
+      "type": "single",
+      "source": "4D标注规范",
+      "question": "路面标识2D清晰可见但3D完全没出现，距离>15m时？",
+      "options": [
+        "必须脑补标注",
+        "不用脑补标注，直接无视不标注",
+        "数据反馈",
+        "部分标注"
+      ],
+      "correctAnswer": 1,
+      "userAnswer": 1,
+      "isCorrect": true
+    }
+  ]
+}
